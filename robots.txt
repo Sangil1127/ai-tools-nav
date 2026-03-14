@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ai-tools-nav.github.io/sitemap.xml
+Sitemap: https://Sangil1127.github.io/ai-tools-nav/sitemap.xml
 
 # 允许所有搜索引擎爬虫访问
 # 禁止访问临时文件
