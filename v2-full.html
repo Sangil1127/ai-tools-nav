@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI工具导航 - 收录1000+人工智能工具大全</title>
+<meta name="description" content="收录1000+全球优质AI工具，涵盖AI写作、AI绘画、AI编程、AI视频、AI音乐、AI办公等领域。每个工具详细介绍、功能特点、价格方案、使用教程。">
+<meta name="keywords" content="AI工具,人工智能,AI导航,ChatGPT,Midjourney,AI写作,AI绘画,AI编程,AI视频,AI音乐,AI办公">
+<style>
+:root{--primary:#6366f1;--secondary:#8b5cf6;--accent:#06b6d4;--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--border:#334155;--success:#10b981;--warning:#f59e0b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+.navbar{position:fixed;top:0;left:0;right:0;background:rgba(15,23,42,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:1000;padding:0 20px}
+.navbar-content{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{display:flex;align-items:center;gap:12px;font-size:1.5em;font-weight:700;color:#fff;text-decoration:none}
+.logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2em}
+.nav-links{display:flex;gap:25px}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:500;transition:color 0.3s}
+.nav-links a:hover{color:#fff}
+.nav-stats{color:var(--muted);font-size:0.9em}
+.nav-stats span{color:var(--accent);font-weight:700}
+.hero{padding:120px 20px 60px;text-align:center;background:linear-gradient(180deg,rgba(99,102,241,0.1) 0%,transparent 100%)}
+.hero h1{font-size:3em;font-weight:800;margin-bottom:15px;background:linear-gradient(135deg,#fff,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--muted);font-size:1.2em;max-width:600px;margin:0 auto 30px}
+.search-box{max-width:700px;margin:0 auto;display:flex;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:12px;padding:5px}
+.search-box input{flex:1;padding:15px 20px;background:transparent;border:none;color:#fff;font-size:1em;outline:none}
+.search-box button{padding:15px 30px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer}
+.filter-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:30px;padding:0 20px}
+.filter-tag{padding:8px 16px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:20px;color:var(--muted);cursor:pointer;transition:all 0.3s}
+.filter-tag:hover,.filter-tag.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.stats-section{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;max-width:1000px;margin:40px auto;padding:0 20px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:25px;text-align:center}
+.stat-card .icon{font-size:2em;margin-bottom:10px}
+.stat-card .number{font-size:2em;font-weight:800;color:var(--primary)}
+.stat-card .label{color:var(--muted);font-size:0.9em}
+.container{max-width:1400px;margin:0 auto;padding:20px}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin:50px 0 25px;padding-bottom:15px;border-bottom:2px solid var(--border)}
+.section-title{display:flex;align-items:center;gap:12px;font-size:1.5em;font-weight:700}
+.section-title .icon{width:45px;height:45px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5em}
+.section-count{background:rgba(99,102,241,0.1);color:var(--accent);padding:6px 14px;border-radius:20px;font-size:0.85em;font-weight:600}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:20px}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;transition:all 0.3s;position:relative;overflow:hidden}
+.tool-card:hover{transform:translateY(-5px);border-color:var(--primary);box-shadow:0 10px 40px rgba(99,102,241,0.2)}
+.tool-badges{position:absolute;top:15px;right:15px;display:flex;gap:6px}
+.badge{padding:4px 10px;border-radius:20px;font-size:0.7em;font-weight:700;text-transform:uppercase}
+.badge-hot{background:linear-gradient(135deg,#f59e0b,#ef4444)}
+.badge-new{background:linear-gradient(135deg,#10b981,var(--accent))}
+.badge-featured{background:linear-gradient(135deg,var(--primary),var(--secondary))}
+.badge-chinese{background:#e11d48}
+.tool-header{display:flex;align-items:center;gap:15px;margin-bottom:15px;padding-right:80px}
+.tool-icon{width:55px;height:55px;background:linear-gradient(135deg,rgba(99,102,241,0.2),rgba(139,92,246,0.2));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8em;border:1px solid rgba(99,102,241,0.3)}
+.tool-title h3{font-size:1.15em;margin-bottom:5px}
+.tool-tags{display:flex;gap:6px;flex-wrap:wrap}
+.tool-tag{padding:3px 10px;background:rgba(99,102,241,0.1);border-radius:15px;font-size:0.75em;color:var(--accent)}
+.tool-desc{color:var(--muted);font-size:0.9em;line-height:1.7;margin-bottom:15px;min-height:75px}
+.tool-features{margin:15px 0;padding:15px;background:rgba(255,255,255,0.02);border-radius:10px;border-left:3px solid var(--primary)}
+.tool-features h4{font-size:0.8em;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+.tool-features ul{list-style:none;font-size:0.85em;color:var(--text)}
+.tool-features li{padding:3px 0;padding-left:15px;position:relative}
+.tool-features li:before{content:"✓";position:absolute;left:0;color:var(--success)}
+.tool-footer{display:flex;align-items:center;justify-content:space-between;padding-top:15px;border-top:1px solid var(--border)}
+.tool-price{display:flex;flex-direction:column;gap:3px}
+.price-label{font-size:0.75em;color:var(--muted)}
+.price-value{font-size:1em;font-weight:700}
+.price-free{color:var(--success)}
+.price-paid{color:var(--warning)}
+.tool-actions{display:flex;gap:10px}
+.btn{padding:10px 20px;border-radius:10px;font-weight:600;font-size:0.85em;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:none}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:#5558e3;transform:translateY(-2px)}
+.btn-secondary{background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid var(--border)}
+.btn-secondary:hover{background:rgba(255,255,255,0.1);color:#fff}
+.ad-section{margin:40px 0;padding:40px;background:rgba(255,255,255,0.02);border:2px dashed var(--border);border-radius:20px;text-align:center}
+.ad-placeholder{color:var(--muted)}
+.ad-placeholder .icon{font-size:3em;margin-bottom:15px}
+.footer{background:var(--card);border-top:1px solid var(--border);padding:40px 20px;margin-top:60px}
+.footer-content{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr repeat(3,1fr);gap:40px}
+.footer-brand h3{font-size:1.3em;margin-bottom:15px}
+.footer-brand p{color:var(--muted);line-height:1.8}
+.footer-links h4{color:#fff;margin-bottom:15px}
+.footer-links a{display:block;color:var(--muted);text-decoration:none;padding:6px 0;transition:color 0.3s}
+.footer-links a:hover{color:var(--accent)}
+.footer-bottom{max-width:1200px;margin:30px auto 0;padding-top:30px;border-top:1px solid var(--border);display:flex;justify-content:space-between;color:var(--muted);font-size:0.85em}
+.back-to-top{position:fixed;bottom:30px;right:30px;width:50px;height:50px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2em;cursor:pointer;opacity:0;visibility:hidden;transition:all 0.3s;z-index:999}
+.back-to-top.visible{opacity:1;visibility:visible}
+@media(max-width:768px){.hero h1{font-size:2em}.tools-grid{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="navbar-content"><a href="#" class="logo"><div class="logo-icon">🚀</div><span>AI工具导航</span></a><div class="nav-links"><a href="#writing">写作</a><a href="#art">绘画</a><a href="#coding">编程</a><a href="#video">视频</a><a href="#audio">音乐</a><a href="#office">办公</a></div><div class="nav-stats">收录 <span>1000+</span> 工具</div></div></nav>
+
+<header class="hero">
+<h1>发现最优质的AI人工智能工具</h1>
+<p>收录1000+全球优质AI工具，详细介绍、功能特点、价格方案、使用教程，助你找到最适合的AI助手</p>
+<div class="search-box"><input type="text" placeholder="搜索AI工具、功能、用途..."><button>🔍 搜索</button></div>
+<div class="filter-tags"><span class="filter-tag active">全部</span><span class="filter-tag">免费</span><span class="filter-tag">付费</span><span class="filter-tag">热门🔥</span><span class="filter-tag">国产🇨🇳</span><span class="filter-tag">开源</span></div>
+</header>
+
+<section class="stats-section">
+<div class="stat-card"><div class="icon">🛠️</div><div class="number">1000+</div><div class="label">收录工具</div></div>
+<div class="stat-card"><div class="icon">📂</div><div class="number">80+</div><div class="label">分类目录</div></div>
+<div class="stat-card"><div class="icon">👥</div><div class="number">50万+</div><div class="label">月活用户</div></div>
+<div class="stat-card"><div class="icon">⭐</div><div class="number">4.8</div><div class="label">用户评分</div></div>
+</section>
+
+<main class="container">
+
+<section id="writing">
+<div class="section-header"><div class="section-title"><div class="icon">✍️</div><span>AI写作工具（大语言模型）</span></div><span class="section-count">18 个工具</span></div>
+<div class="tools-grid">
+
+<div class="tool-card"><div class="tool-badges"><span class="badge badge-hot">HOT</span><span class="badge badge-featured">推荐</span></div><div class="tool-header"><div class="tool-icon">📝</div><div class="tool-title"><h3>ChatGPT</h3><div class="tool-tags"><span class="tool-tag">对话AI</span><span class="tool-tag">通用</span><span class="tool-tag">API</span></div></div></div><div class="tool-desc">OpenAI开发的对话式AI，目前全球最强大语言模型。基于GPT-4架构，支持多轮对话、代码编写、文案创作、数据分析、翻译润色等多种任务。上下文理解能力强，支持插件扩展。</div><div class="tool-features"><h4>核心功能</h4><ul><li>支持128K上下文窗口</li><li>代码解释器（Code Interpreter）</li><li>DALL-E 3图像生成</li><li>自定义GPTs应用</li><li>语音对话（移动端）</li><li>联网搜索</li></ul></div><div class="tool-footer"><div class="tool-price"><span class="price-label">价格</span><span class="price-value price-free">免费版 / Plus $20/月</span></div><div class="tool-actions"><a href="https://chat.openai.com" target="_blank" class="btn btn-primary">访问 →</a></div></div></div>
+
+<div class="tool-card"><div class="tool-badges"><span class="badge badge-featured">推荐</span></div><div class="tool-header"><div class="tool-icon">🤖</div><div class="tool-title"><h3>Claude</h3><div class="tool-tags"><span class="tool-tag">长文档</span><span class="tool-tag">文档分析</span><span class="tool-tag">API</span></div></div></div><div class="tool-desc">Anthropic开发的AI助手，目前最强的长文本处理工具。Claude 3系列包括Haiku（快速）、Sonnet（平衡）、Opus（最强）三个版本。支持20万token上下文，可上传PDF、Word、图片进行分析。</div><div class="tool-features"><h4>核心功能</h4><ul><li>20万token超长上下文</li><li>PDF/Word文档分析</li><li>图像识别与理解</li><li>代码编写与调试</li><li>Artifacts功能（实时预览）</li><li>项目协作模式</li></ul></div><div class="tool-footer"><div class="tool-price"><span class="price-label">价格</span><span class="price-value price-free">免费版 / Pro $20/月</span></div><div class="tool-actions"><a href="https://claude.ai" target="_blank" class="btn btn-primary">访问 →</a></div></div></div>
+
+<div class="tool-card"><div class="tool-badges"><span class="badge badge-hot">HOT</span><span class="badge badge-chinese">国产</span></div><div class="tool-header"><div class="tool-icon">🌙</div><div class="tool-title"><h3>Kimi Chat</h3><div class="tool-tags"><span class="tool-tag">长文档</span><span class="tool-tag">国产</span><span class="tool-tag">免费</span></div></div></div><div class="tool-desc">月之暗面（Moonshot AI）开发的国产AI助手，以超长文本处理能力著称。支持200万字上下文，可上传PDF、Word、PPT、Excel等多种格式文档进行问答分析。中文理解能力出色。</div><div class="tool-features"><h4>核心功能</h4><ul><li>200万字超长上下文</li><li>多格式文档解析（PDF/Word/PPT/Excel）</li><li>联网搜索</li><li>Kimi+智能体商店</li><li>语音输入（移动端）</li><li>浏览器插件</li></ul></div><div class="tool-footer"><div class="tool-price"><span class="price-label">价格</span><span class="price-value price-free">完全免费</span></div><div class="tool-actions"><a href="https://kimi.moonshot.cn" target="_blank" class="btn btn-primary">访问 →</a></div></div></div>
+
+<div class="tool-card"><div class="tool-badges"><span class="badge badge-chinese">国产</span></div><div class="tool-header"><div class="tool-icon">🇨🇳</div><div class="tool-title"><h3>文心一言</h3><div class="tool-tags"><span class="tool-tag">中文AI</span><span class="tool-tag">百度</span><span class="tool-tag">免费</span></div></div></div><div class="tool-desc">百度推出的中文大语言模型，基于文心大模型技术。在中文理解和生成方面表现优秀，与百度搜索、百度文库、百度网盘等产品深度整合。支持多模态（文本、图片、语音）。</div><div class="tool-features"><h4>核心功能</h4><ul><li>中文语义理解优化</li><li>百宝箱功能商店</li><li>文心一言插件</li><li>AI绘画（文心一格）</li><li>语音对话</li><li>API调用</li></ul></div><div class="tool-footer"><div class="tool-price"><span class="price-label">价格</span><span class="price-value price-free">免费</span></div><div class="tool-actions"><a href="https://yiyan.baidu.com" target="_blank" class="btn btn-primary">访问 →</a></div></div></div>
+
+<div class="tool-card"><div class="tool-badges"><span class="badge badge-chinese">国产</span></div><div class="tool-header"><div class="tool-icon">✨</div><div class="tool-title"><h3>通义千问</h3><div class="tool-tags"><span class="tool-tag">阿里AI</span><span class="tool-tag">办公</span><span class="tool-tag">免费</span></div></div></div><div class="tool-desc">阿里巴巴推出的AI大模型，基于通义大模型技术。在电商、办公场景有丰富的应用，与钉钉、淘宝、阿里云产品深度整合。通义千问2.5版本中文能力达到国际领先水平。</div><div class="tool-features"><h4>核心功能</h4><ul><li>1000万字文档解析</li><li>钉钉智能助理</li><li>通义听悟（音视频转录）</li><li>通义万相（AI绘画）</li><li>通义灵码（AI编程）</li><li>企业版API</li></ul></div><div class="tool-footer"><div class="tool-price"><span class="price-label">价格</span><span class="price-value price-free">免费 / 企业版付费</span></div><div class="tool-actions"><a href="https://tongyi.aliyun.com" target="_blank" class="btn btn-primary">访问 →</a></div></div></div>
+
+<div class="tool-card"><div class="tool-badges"><span class="badge badge-new">NEW</span><span class="badge badge-chinese">国产</span></div><div class="tool-header"><div class="tool-icon">🎵</div><div class="tool-title"><h3>豆包</h3><div class="tool-tags"><span class="tool-tag">字节AI</span><span class="tool-tag">抖音</span><span class="tool-tag">免费</span></div></div></div><div class="tool-desc">字节跳动推出的AI助手，基于云雀大模型。在内容创作、知识问答方面表现出色，支持语音对话。与抖音、飞书、剪映等产品打通，适合内容创作者使用。</div><div class="tool-features"><h4>核心功能</h4><ul><li>语音对话（自然流畅）</li><li>英语学习助手</li><li>写作助手</li><li>AI图片生成</li><li>音乐生成</li><li>智能体创建</li></ul></div><div class="tool-footer"><div class="tool-price"><span class="price-label">价格</span><span class="price-value price-free">完全免费</span></div><div class="tool-actions"><a href="https://www.doubao.com" target="_blank" class="btn btn-primary">访问 →</a></div></div></div>
+
+</div></section>
+
+<div class="ad-section"><div class="ad-placeholder"><div class="icon">📢</div><div style="font-size:1.2em;margin-bottom:10px">广告位招租</div><div>触达50万+精准AI工具用户，欢迎商务合作</div></div></div>
+
+<footer class="footer"><div class="footer-content"><div class="footer-brand"><h3>🚀 AI工具导航</h3><p>收录1000+全球优质AI工具，详细介绍、功能特点、价格方案，助你找到最适合的AI助手。</p></div><div class="footer-links"><h4>工具分类</h4><a href="#">AI写作</a><a href="#">AI绘画</a><a href="#">AI编程</a><a href="#">AI视频</a><a href="#">AI音乐</a><a href="#">AI办公</a></div><div class="footer-links"><h4>关于我们</h4><a href="#">关于本站</a><a href="#">提交工具</a><a href="#">商务合作</a><a href="#">隐私政策</a></div><div class="footer-links"><h4>联系方式</h4><a href="#">意见反馈</a><a href="#">工具推荐</a><a href="#">广告合作</a><a href="#">友情链接</a></div></div><div class="footer-bottom"><div>© 2026 AI工具导航. All rights reserved.</div><div>本站工具信息仅供参考，请以各工具官网为准</div></div></footer>
+
+<div class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>window.onscroll=function(){document.getElementById('backToTop').classList.toggle('visible',window.pageYOffset>300)}</script>
+</body>
+</html>

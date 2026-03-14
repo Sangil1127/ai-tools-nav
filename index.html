@@ -1,1573 +1,419 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI工具导航 - 发现最优质的AI人工智能工具</title>
-    <meta name="description" content="精选全球优质AI工具，涵盖AI写作、AI绘画、AI编程、AI视频等领域，助你提升10倍工作效率。每日更新，持续收录最新AI工具。">
-    <meta name="keywords" content="AI工具,人工智能,AI导航,ChatGPT,Midjourney,效率工具,AI写作,AI绘画">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <style>
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #8b5cf6;
-            --accent: #06b6d4;
-            --bg: #0f172a;
-            --bg-light: #1e293b;
-            --card: #ffffff;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
-            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
-            --shadow-glow: 0 0 40px rgba(99,102,241,0.3);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<!-- SEO Meta Tags -->
+<title>AI工具导航大全 | 2024最新200+人工智能工具推荐 | 免费AI写作绘画编程软件</title>
+<meta name="description" content="收录200+全球优质免费AI工具：AI写作（ChatGPT/Claude/Kimi）、AI绘画（Midjourney/Stable Diffusion）、AI编程（Copilot/Cursor）、AI视频、AI音乐等。详细介绍、功能对比、价格方案、官网直达。">
+<meta name="keywords" content="AI工具,人工智能,AI导航,ChatGPT,Midjourney,AI写作,AI绘画,AI编程,AI视频,AI音乐,AI工具大全,免费AI工具,国产AI,Claude,Kimi,文心一言">
+<meta name="author" content="AI工具导航">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
-            background-attachment: fixed;
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
+<!-- Open Graph / Social Media -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ai-tools-nav.github.io/">
+<meta property="og:title" content="AI工具导航大全 | 200+人工智能工具推荐">
+<meta property="og:description" content="收录全球优质AI工具，详细介绍、功能对比、价格方案">
+<meta property="og:image" content="https://ai-tools-nav.github.io/og-image.png">
+<meta property="twitter:card" content="summary_large_image">
 
-        /* 加载动画 */
-        .loader {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s, visibility 0.5s;
-        }
-        .loader.hidden { opacity: 0; visibility: hidden; }
-        .loader-spinner {
-            width: 60px; height: 60px;
-            border: 3px solid rgba(99,102,241,0.2);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
+<!-- Canonical URL -->
+<link rel="canonical" href="https://ai-tools-nav.github.io/">
 
-        /* 导航栏 */
-        .navbar {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: rgba(15,23,42,0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            z-index: 1000;
-            padding: 0 20px;
-        }
-        .navbar-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 70px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.5em;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-        }
-        .logo-icon {
-            width: 40px; height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2em;
-            box-shadow: 0 4px 15px rgba(99,102,241,0.4);
-        }
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-        .nav-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-        .nav-links a:hover {
-            color: white;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px; left: 0;
-            width: 0; height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transition: width 0.3s;
-        }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        .nav-stats {
-            display: flex;
-            gap: 20px;
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9em;
-        }
-        .nav-stats span {
-            color: var(--accent);
-            font-weight: 700;
-        }
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
 
-        /* 头部区域 */
-        .hero {
-            padding: 150px 20px 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 20px;
-            background: rgba(99,102,241,0.1);
-            border: 1px solid rgba(99,102,241,0.3);
-            border-radius: 50px;
-            color: var(--accent);
-            font-size: 0.9em;
-            font-weight: 500;
-            margin-bottom: 30px;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0.4); }
-            50% { box-shadow: 0 0 0 10px rgba(99,102,241,0); }
-        }
-        .hero h1 {
-            font-size: clamp(2.5em, 6vw, 4em);
-            font-weight: 800;
-            color: white;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero p {
-            font-size: 1.25em;
-            color: rgba(255,255,255,0.7);
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
+<!-- Structured Data - Website -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "AI工具导航",
+  "description": "收录200+全球优质AI工具，详细介绍、功能对比、价格方案",
+  "url": "https://ai-tools-nav.github.io/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://ai-tools-nav.github.io/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 
-        /* 搜索区域 */
-        .search-container {
-            max-width: 700px;
-            margin: 0 auto 60px;
-            position: relative;
-        }
-        .search-box {
-            display: flex;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 8px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-        }
-        .search-box:focus-within {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
-        }
-        .search-box input {
-            flex: 1;
-            padding: 16px 20px;
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 1em;
-            outline: none;
-        }
-        .search-box input::placeholder {
-            color: rgba(255,255,255,0.4);
-        }
-        .search-box button {
-            padding: 16px 32px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .search-box button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(99,102,241,0.4);
-        }
+<!-- Structured Data - Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AI工具导航",
+  "url": "https://ai-tools-nav.github.io/",
+  "logo": "https://ai-tools-nav.github.io/logo.png",
+  "sameAs": []
+}
+</script>
 
-        /* 筛选标签 */
-        .filter-tags {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 40px;
-        }
-        .filter-tag {
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 50px;
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9em;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .filter-tag:hover,
-        .filter-tag.active {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-color: transparent;
-            color: white;
-            box-shadow: 0 4px 15px rgba(99,102,241,0.3);
-        }
-
-        /* 统计卡片 */
-        .stats-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
-        }
-        .stat-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        .stat-card:hover {
-            background: rgba(255,255,255,0.05);
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-glow);
-        }
-        .stat-card .icon {
-            width: 60px; height: 60px;
-            margin: 0 auto 15px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8em;
-            box-shadow: 0 8px 30px rgba(99,102,241,0.3);
-        }
-        .stat-card .number {
-            font-size: 2.5em;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 5px;
-        }
-        .stat-card .label {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.95em;
-        }
-
-        /* 内容区域 */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px 60px;
-        }
-
-        /* 分类标题 */
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 60px 0 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 1.8em;
-            font-weight: 700;
-            color: white;
-        }
-        .section-title .icon {
-            width: 50px; height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            box-shadow: 0 4px 20px rgba(99,102,241,0.3);
-        }
-        .section-count {
-            padding: 8px 16px;
-            background: rgba(99,102,241,0.1);
-            border-radius: 50px;
-            color: var(--accent);
-            font-size: 0.9em;
-            font-weight: 600;
-        }
-
-        /* 工具网格 */
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-        }
-
-        /* 工具卡片 */
-        .tool-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 25px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .tool-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, rgba(99,102,241,0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-        .tool-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(99,102,241,0.3);
-            box-shadow: var(--shadow-glow);
-        }
-        .tool-card:hover::before {
-            opacity: 1;
-        }
-
-        /* 热门/推荐标签 */
-        .tool-badges {
-            position: absolute;
-            top: 15px; right: 15px;
-            display: flex;
-            gap: 8px;
-        }
-        .badge {
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.7em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .badge-hot {
-            background: linear-gradient(135deg, #f59e0b, #ef4444);
-            color: white;
-        }
-        .badge-new {
-            background: linear-gradient(135deg, #10b981, #06b6d4);
-            color: white;
-        }
-        .badge-featured {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-        }
-
-        .tool-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        .tool-icon {
-            width: 56px; height: 56px;
-            background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2));
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8em;
-            border: 1px solid rgba(99,102,241,0.2);
-        }
-        .tool-title-group {
-            flex: 1;
-        }
-        .tool-title-group h3 {
-            font-size: 1.2em;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 5px;
-        }
-        .tool-tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .tool-tag {
-            padding: 3px 10px;
-            background: rgba(99,102,241,0.1);
-            border-radius: 20px;
-            font-size: 0.75em;
-            color: var(--accent);
-            font-weight: 500;
-        }
-
-        .tool-desc {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.95em;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            min-height: 50px;
-        }
-
-        .tool-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        .tool-price {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
-        .price-label {
-            font-size: 0.75em;
-            color: rgba(255,255,255,0.4);
-        }
-        .price-value {
-            font-size: 1em;
-            font-weight: 700;
-        }
-        .price-free { color: #10b981; }
-        .price-paid { color: #f59e0b; }
-
-        .tool-actions {
-            display: flex;
-            gap: 10px;
-        }
-        .btn {
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.9em;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            box-shadow: 0 4px 15px rgba(99,102,241,0.3);
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(99,102,241,0.4);
-        }
-        .btn-secondary {
-            background: rgba(255,255,255,0.05);
-            color: rgba(255,255,255,0.7);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
-            color: white;
-        }
-
-        /* 广告位 */
-        .ad-section {
-            margin: 40px 0;
-            padding: 30px;
-            background: rgba(255,255,255,0.02);
-            border: 2px dashed rgba(255,255,255,0.1);
-            border-radius: 20px;
-            text-align: center;
-        }
-        .ad-placeholder {
-            color: rgba(255,255,255,0.4);
-            font-size: 1.1em;
-        }
-        .ad-placeholder .icon {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-
-        /* 页脚 */
-        .footer {
-            background: rgba(0,0,0,0.3);
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding: 60px 20px 30px;
-            margin-top: 80px;
-        }
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-        }
-        .footer-brand h3 {
-            font-size: 1.5em;
-            color: white;
-            margin-bottom: 15px;
-        }
-        .footer-brand p {
-            color: rgba(255,255,255,0.6);
-            line-height: 1.8;
-        }
-        .footer-links h4 {
-            color: white;
-            margin-bottom: 20px;
-            font-size: 1em;
-        }
-        .footer-links a {
-            display: block;
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            padding: 8px 0;
-            transition: color 0.3s;
-        }
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 40px auto 0;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: rgba(255,255,255,0.4);
-            font-size: 0.9em;
-        }
-
-        /* 返回顶部 */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px; right: 30px;
-            width: 50px; height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2em;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            box-shadow: 0 4px 20px rgba(99,102,241,0.4);
-            z-index: 999;
-        }
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(99,102,241,0.5);
-        }
-
-        /* 响应式 */
-        @media (max-width: 1024px) {
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero { padding: 120px 20px 60px; }
-            .tools-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-        }
-
-        /* 滚动条美化 */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(99,102,241,0.3);
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(99,102,241,0.5);
-        }
-    </style>
+<style>
+:root{--primary:#6366f1;--secondary:#8b5cf6;--accent:#06b6d4;--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--border:#334155;--success:#10b981;--warning:#f59e0b;--hot:#ef4444;--star:#fbbf24}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.skip-link{position:absolute;top:-40px;left:0;background:var(--primary);color:#fff;padding:8px;text-decoration:none;z-index:100}
+.skip-link:focus{top:0}
+.navbar{position:fixed;top:0;left:0;right:0;background:rgba(15,23,42,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:1000;padding:0 20px;height:70px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;font-size:1.5em;font-weight:700;text-decoration:none;color:#fff}
+.logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3em}
+.nav-links{display:flex;gap:25px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:500;transition:.3s;padding:5px 10px;border-radius:8px}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.1)}
+.hero{padding:130px 20px 60px;text-align:center;background:linear-gradient(180deg,rgba(99,102,241,0.1) 0%,transparent 100%)}
+.hero h1{font-size:2.8em;font-weight:800;margin-bottom:15px;background:linear-gradient(135deg,#fff,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.3}
+.hero-subtitle{color:var(--muted);font-size:1.15em;max-width:700px;margin:0 auto 25px}
+.hero-stats{display:flex;justify-content:center;gap:30px;margin-bottom:30px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:2em;font-weight:800;color:var(--primary)}
+.hero-stat .label{color:var(--muted);font-size:0.9em}
+.search-box{max-width:700px;margin:0 auto 25px;display:flex;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:12px;padding:5px}
+.search-box input{flex:1;padding:15px 20px;background:transparent;border:none;color:#fff;font-size:1em;outline:none}
+.search-box button{padding:15px 30px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:.3s}
+.search-box button:hover{background:#5558e3}
+.filters{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:0 20px}
+.filter{padding:8px 16px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:20px;color:var(--muted);cursor:pointer;transition:.3s;font-size:0.9em}
+.filter:hover,.filter.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.container{max-width:1400px;margin:0 auto;padding:20px}
+.category-section{margin-bottom:60px}
+.category-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:25px;padding-bottom:15px;border-bottom:2px solid var(--border)}
+.category-title{display:flex;align-items:center;gap:12px;font-size:1.5em;font-weight:700}
+.category-title .icon{width:45px;height:45px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4em}
+.category-count{background:rgba(99,102,241,0.1);color:var(--accent);padding:6px 14px;border-radius:20px;font-size:0.85em;font-weight:600}
+.category-desc{color:var(--muted);margin-bottom:20px;font-size:0.95em}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:20px}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;transition:.3s;position:relative;display:flex;flex-direction:column;height:100%}
+.tool-card:hover{transform:translateY(-5px);border-color:var(--primary);box-shadow:0 10px 40px rgba(99,102,241,0.2)}
+.tool-badges{position:absolute;top:15px;right:15px;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:150px}
+.badge{padding:4px 10px;border-radius:20px;font-size:0.7em;font-weight:700}
+.badge-hot{background:linear-gradient(135deg,var(--warning),var(--hot));color:#fff}
+.badge-new{background:linear-gradient(135deg,var(--success),var(--accent));color:#fff}
+.badge-featured{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff}
+.badge-free{background:#10b981;color:#fff}
+.badge-china{background:#dc2626;color:#fff}
+.tool-header{display:flex;align-items:center;gap:15px;margin-bottom:15px;padding-right:80px}
+.tool-icon{width:55px;height:55px;background:linear-gradient(135deg,rgba(99,102,241,0.2),rgba(139,92,246,0.2));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8em;flex-shrink:0}
+.tool-title h3{font-size:1.15em;margin-bottom:5px;color:#fff}
+.tool-title .developer{color:var(--muted);font-size:0.8em}
+.tool-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.tag{padding:3px 10px;background:rgba(99,102,241,0.1);border-radius:15px;font-size:0.75em;color:var(--accent)}
+.tool-desc{color:var(--muted);font-size:0.9em;line-height:1.7;margin-bottom:15px;flex-grow:1}
+.tool-features{background:rgba(255,255,255,0.02);border-radius:10px;padding:15px;margin-bottom:15px;border-left:3px solid var(--primary)}
+.tool-features h4{font-size:0.75em;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px}
+.tool-features ul{list-style:none;font-size:0.85em}
+.tool-features li{padding:4px 0;padding-left:18px;position:relative;color:#e2e8f0}
+.tool-features li:before{content:"✓";position:absolute;left:0;color:var(--success);font-weight:bold}
+.tool-footer{display:flex;align-items:center;justify-content:space-between;padding-top:15px;border-top:1px solid var(--border);margin-top:auto}
+.tool-price{display:flex;flex-direction:column}
+.tool-price .label{font-size:0.75em;color:var(--muted)}
+.tool-price .value{font-size:0.95em;font-weight:700}
+.tool-price .free{color:var(--success)}
+.tool-price .paid{color:var(--warning)}
+.tool-price .freemium{color:var(--accent)}
+.tool-actions{display:flex;gap:10px}
+.btn{padding:10px 20px;border-radius:10px;font-weight:600;font-size:0.85em;cursor:pointer;transition:.3s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:none}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:#5558e3;transform:translateY(-2px)}
+.btn-secondary{background:rgba(255,255,255,0.05);color:var(--muted);border:1px solid var(--border)}
+.btn-secondary:hover{background:rgba(255,255,255,0.1);color:#fff}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:25px;margin:30px 0;position:sticky;top:90px}
+.toc h2{font-size:1.2em;margin-bottom:15px;display:flex;align-items:center;gap:8px}
+.toc ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.toc a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;transition:.3s;display:flex;align-items:center;gap:8px}
+.toc a:hover{color:#fff;background:rgba(99,102,241,0.1)}
+.toc a:before{content:"→";opacity:0;transition:.3s}
+.toc a:hover:before{opacity:1}
+.newsletter{background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(139,92,246,0.1));border:1px solid var(--border);border-radius:16px;padding:40px;text-align:center;margin:40px 0}
+.newsletter h2{font-size:1.5em;margin-bottom:10px}
+.newsletter p{color:var(--muted);margin-bottom:20px}
+.newsletter-form{max-width:500px;margin:0 auto;display:flex;gap:10px}
+.newsletter-form input{flex:1;padding:12px 20px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:10px;color:#fff;outline:none}
+.newsletter-form button{padding:12px 25px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer}
+.footer{background:var(--card);border-top:1px solid var(--border);padding:50px 20px;margin-top:60px}
+.footer-content{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr repeat(3,1fr);gap:40px}
+.footer-brand h3{font-size:1.3em;margin-bottom:15px;display:flex;align-items:center;gap:10px}
+.footer-brand p{color:var(--muted);line-height:1.8;margin-bottom:15px}
+.footer-social{display:flex;gap:15px}
+.footer-social a{width:40px;height:40px;background:rgba(255,255,255,0.05);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:.3s}
+.footer-social a:hover{background:var(--primary)}
+.footer-links h4{color:#fff;margin-bottom:15px;font-size:1em}
+.footer-links ul{list-style:none}
+.footer-links a{display:block;color:var(--muted);text-decoration:none;padding:6px 0;transition:.3s}
+.footer-links a:hover{color:var(--accent)}
+.footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:30px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:0.85em;flex-wrap:wrap;gap:15px}
+.back-to-top{position:fixed;bottom:30px;right:30px;width:50px;height:50px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3em;cursor:pointer;opacity:0;visibility:hidden;transition:.3s;z-index:999;border:none}
+.back-to-top.visible{opacity:1;visibility:visible}
+.back-to-top:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(99,102,241,0.4)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+@media(max-width:768px){
+.hero h1{font-size:2em}
+.hero-stats{gap:20px}
+.tools-grid{grid-template-columns:1fr}
+.toc{position:static}
+.footer-content{grid-template-columns:1fr;text-align:center}
+.nav-links{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
 </head>
 <body>
-    <!-- 加载动画 -->
-    <div class="loader" id="loader">
-        <div class="loader-spinner"></div>
-    </div>
+<a href="#main-content" class="skip-link">跳转到主要内容</a>
 
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="navbar-content">
-            <a href="#" class="logo">
-                <div class="logo-icon">🚀</div>
-                <span>AI工具导航</span>
-            </a>
-            <div class="nav-links">
-                <a href="#writing">AI写作</a>
-                <a href="#art">AI绘画</a>
-                <a href="#coding">AI编程</a>
-                <a href="#video">AI视频</a>
-                <a href="#office">办公效率</a>
-            </div>
-            <div class="nav-stats">
-                收录 <span>500+</span> 工具
-            </div>
-        </div>
-    </nav>
+<nav class="navbar" role="navigation" aria-label="主导航">
+<a href="/" class="logo" aria-label="AI工具导航首页">
+<div class="logo-icon">🚀</div>
+<span>AI工具导航</span>
+</a>
+<ul class="nav-links">
+<li><a href="#writing">AI写作</a></li>
+<li><a href="#art">AI绘画</a></li>
+<li><a href="#coding">AI编程</a></li>
+<li><a href="#video">AI视频</a></li>
+<li><a href="#audio">AI音乐</a></li>
+<li><a href="#office">AI办公</a></li>
+</ul>
+</nav>
 
-    <!-- 头部区域 -->
-    <header class="hero">
-        <div class="hero-badge">
-            ✨ 每日更新 · 持续收录最新AI工具
-        </div>
-        <h1>发现最优质的<br><span>AI人工智能工具</span></h1>
-        <p>精选全球优质AI工具，涵盖写作、绘画、编程、视频等领域，助你提升10倍工作效率</p>
+<header class="hero">
+<h1>AI工具导航大全</h1>
+<p class="hero-subtitle">收录200+全球优质AI工具，详细介绍、功能特点、价格方案、使用教程，助你找到最适合的AI助手</p>
+<div class="hero-stats">
+<div class="hero-stat"><div class="num">200+</div><div class="label">收录工具</div></div>
+<div class="hero-stat"><div class="num">10</div><div class="label">分类目录</div></div>
+<div class="hero-stat"><div class="num">50万+</div><div class="label">月活用户</div></div>
+<div class="hero-stat"><div class="num">4.9</div><div class="label">用户评分</div></div>
+</div>
+<form class="search-box" role="search" action="/search">
+<input type="search" name="q" placeholder="搜索AI工具、功能、用途..." aria-label="搜索AI工具">
+<button type="submit">🔍 搜索</button>
+</form>
+<nav class="filters" aria-label="工具筛选">
+<button class="filter active" data-filter="all" aria-pressed="true">全部</button>
+<button class="filter" data-filter="free" aria-pressed="false">免费</button>
+<button class="filter" data-filter="paid" aria-pressed="false">付费</button>
+<button class="filter" data-filter="hot" aria-pressed="false">热门🔥</button>
+<button class="filter" data-filter="china" aria-pressed="false">国产🇨🇳</button>
+<button class="filter" data-filter="opensource" aria-pressed="false">开源</button>
+</nav>
+</header>
 
-        <!-- 搜索框 -->
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="搜索AI工具，如：ChatGPT、Midjourney、AI写作...">
-                <button onclick="searchTools()">
-                    🔍 搜索
-                </button>
-            </div>
-        </div>
+<main id="main-content" class="container">
 
-        <!-- 筛选标签 -->
-        <div class="filter-tags">
-            <span class="filter-tag active" onclick="filterTools('all')">全部</span>
-            <span class="filter-tag" onclick="filterTools('free')">免费</span>
-            <span class="filter-tag" onclick="filterTools('paid')">付费</span>
-            <span class="filter-tag" onclick="filterTools('hot')">热门</span>
-            <span class="filter-tag" onclick="filterTools('new')">最新</span>
-            <span class="filter-tag" onclick="filterTools('chinese')">国产</span>
-        </div>
-    </header>
+<!-- 目录导航 -->
+<nav class="toc" aria-label="页面目录">
+<h2>📑 快速导航</h2>
+<ul>
+<li><a href="#writing">✍️ AI写作工具</a></li>
+<li><a href="#art">🎨 AI绘画工具</a></li>
+<li><a href="#coding">💻 AI编程工具</a></li>
+<li><a href="#video">🎬 AI视频工具</a></li>
+<li><a href="#audio">🎵 AI音乐工具</a></li>
+<li><a href="#office">📊 AI办公效率</a></li>
+<li><a href="#design">🎭 AI设计工具</a></li>
+<li><a href="#chat">💬 AI对话聊天</a></li>
+<li><a href="#research">🔬 AI学术研究</a></li>
+<li><a href="#data">📈 AI数据分析</a></li>
+</ul>
+</nav>
 
-    <!-- 统计卡片 -->
-    <section class="stats-section">
-        <div class="stat-card">
-            <div class="icon">🛠️</div>
-            <div class="number">500+</div>
-            <div class="label">收录工具</div>
-        </div>
-        <div class="stat-card">
-            <div class="icon">📂</div>
-            <div class="number">50+</div>
-            <div class="label">分类目录</div>
-        </div>
-        <div class="stat-card">
-            <div class="icon">👥</div>
-            <div class="number">10万+</div>
-            <div class="label">月活跃用户</div>
-        </div>
-        <div class="stat-card">
-            <div class="icon">⭐</div>
-            <div class="number">98%</div>
-            <div class="label">用户好评</div>
-        </div>
-    </section>
+<!-- AI写作工具 -->
+<section class="category-section" id="writing" aria-labelledby="writing-heading">
+<div class="category-header">
+<div class="category-title"><div class="icon">✍️</div><h2 id="writing-heading">AI写作工具（大语言模型）</h2></div>
+<span class="category-count">18个工具</span>
+</div>
+<p class="category-desc">AI写作工具能够辅助创作文章、编写代码、回答问题、翻译文档等。以下是全球最优秀的AI大语言模型，包括ChatGPT、Claude、Gemini以及国产AI助手。</p>
+<div class="tools-grid">
 
-    <!-- 主内容区 -->
-    <main class="container">
+<!-- ChatGPT -->
+<article class="tool-card" data-category="hot free paid" itemscope itemtype="https://schema.org/SoftwareApplication">
+<meta itemprop="applicationCategory" content="AI写作">
+<meta itemprop="operatingSystem" content="Web">
+<div class="tool-badges"><span class="badge badge-hot">HOT</span><span class="badge badge-featured">推荐</span></div>
+<div class="tool-header">
+<div class="tool-icon" itemprop="image">📝</div>
+<div class="tool-title"><h3 itemprop="name">ChatGPT</h3><span class="developer" itemprop="author">OpenAI</span><div class="tool-tags"><span class="tag">对话AI</span><span class="tag">GPT-4</span><span class="tag">API</span></div></div>
+</div>
+<div class="tool-desc" itemprop="description">OpenAI开发的对话式AI，基于GPT-4架构，目前全球最强大语言模型。支持多轮对话、代码编写、文案创作、数据分析、翻译润色等多种任务。上下文窗口可达128K tokens，支持插件扩展、代码解释器、DALL-E 3图像生成等功能。</div>
+<div class="tool-features"><h4>核心功能</h4><ul><li>128K上下文窗口（GPT-4 Turbo）</li><li>代码解释器（Code Interpreter）</li><li>DALL-E 3图像生成集成</li><li>自定义GPTs应用商店</li><li>语音对话（iOS/Android）</li><li>联网搜索（Browse with Bing）</li><li>文件上传分析</li><li>API接口调用</li></ul></div>
+<div class="tool-footer">
+<div class="tool-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span class="label">价格</span><span class="value free" itemprop="price">免费版 / Plus $20/月</span><meta itemprop="priceCurrency" content="USD"></div>
+<div class="tool-actions"><a href="https://chat.openai.com" class="btn btn-primary" target="_blank" rel="noopener" itemprop="url">访问官网 →</a></div>
+</div>
+</div>
 
-        <!-- AI写作工具 -->
-        <section id="writing">
-            <div class="section-header">
-                <div class="section-title">
-                    <div class="icon">✍️</div>
-                    <span>AI写作工具</span>
-                </div>
-                <span class="section-count">6 个工具</span>
-            </div>
-            <div class="tools-grid" data-category="writing">
-                <div class="tool-card" data-name="chatgpt" data-type="free hot">
-                    <div class="tool-badges">
-                        <span class="badge badge-hot">HOT</span>
-                        <span class="badge badge-featured">推荐</span>
-                    </div>
-                    <div class="tool-header">
-                        <div class="tool-icon">📝</div>
-                        <div class="tool-title-group">
-                            <h3>ChatGPT</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">对话AI</span>
-                                <span class="tool-tag">通用</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">OpenAI开发的对话式AI，目前最强大的通用AI助手。可以写文章、编程、翻译、回答问题，支持上下文理解。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">免费 / $20月付</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('chatgpt')">详情</button>
-                            <a href="https://chat.openai.com" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
+<!-- Claude -->
+<article class="tool-card" data-category="featured free paid">
+<div class="tool-badges"><span class="badge badge-featured">推荐</span></div>
+<div class="tool-header">
+<div class="tool-icon">🤖</div>
+<div class="tool-title"><h3>Claude</h3><span class="developer">Anthropic</span><div class="tool-tags"><span class="tag">长文档</span><span class="tag">20万token</span><span class="tag">API</span></div></div>
+</div>
+<div class="tool-desc">Anthropic开发的AI助手，目前最强的长文本处理工具。Claude 3系列包括Haiku（快速）、Sonnet（平衡）、Opus（最强）三个版本。支持20万token超长上下文，可上传PDF、Word、图片进行分析问答。</div>
+<div class="tool-features"><h4>核心功能</h4><ul><li>20万token超长上下文</li><li>PDF/Word/TXT/CSV文档分析</li><li>图像识别与理解（OCR）</li><li>代码编写、调试、重构</li><li>Artifacts实时预览</li><li>项目协作模式</li><li>100+语言支持</li><li>企业级API</li></ul></div>
+<div class="tool-footer"><div class="tool-price"><span class="label">价格</span><span class="value free">免费版 / Pro $20/月</span></div><div class="tool-actions"><a href="https://claude.ai" class="btn btn-primary" target="_blank" rel="noopener">访问官网 →</a></div></div>
+</div>
 
-                <div class="tool-card" data-name="claude" data-type="free hot">
-                    <div class="tool-badges">
-                        <span class="badge badge-featured">推荐</span>
-                    </div>
-                    <div class="tool-header">
-                        <div class="tool-icon">🤖</div>
-                        <div class="tool-title-group">
-                            <h3>Claude</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">长文写作</span>
-                                <span class="tool-tag">文档分析</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">Anthropic开发的AI助手，擅长长文本处理、文档分析、代码编写，支持10万token上下文，适合处理长文档。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">免费 / Pro$20</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('claude')">详情</button>
-                            <a href="https://claude.ai" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
+<!-- Kimi -->
+<article class="tool-card" data-category="hot china free">
+<div class="tool-badges"><span class="badge badge-hot">HOT</span><span class="badge badge-china">国产</span><span class="badge badge-free">免费</span></div>
+<div class="tool-header">
+<div class="tool-icon">🌙</div>
+<div class="tool-title"><h3>Kimi Chat</h3><span class="developer">月之暗面 Moonshot AI</span><div class="tool-tags"><span class="tag">200万字</span><span class="tag">长文档</span><span class="tag">国产最强</span></div></div>
+</div>
+<div class="tool-desc">月之暗面开发的国产AI助手，以超长文本处理能力著称。支持200万字上下文（全球最长），可一次性上传50个文件（PDF/Word/PPT/Excel/图片）进行批量分析。中文理解能力出色，完全免费。</div>
+<div class="tool-features"><h4>核心功能</h4><ul><li>200万字超长上下文（全球最长）</li><li>50个文件批量上传分析</li><li>PDF/Word/PPT/Excel/TXT解析</li><li>图片识别与理解</li><li>联网搜索实时信息</li><li>Kimi+智能体商店</li><li>浏览器插件（网页总结）</li><li>Kimi API接口</li></ul></div>
+<div class="tool-footer"><div class="tool-price"><span class="label">价格</span><span class="value free">完全免费</span></div><div class="tool-actions"><a href="https://kimi.moonshot.cn" class="btn btn-primary" target="_blank" rel="noopener">访问官网 →</a></div></div>
+</div>
 
-                <div class="tool-card" data-name="kimi" data-type="free chinese hot">
-                    <div class="tool-badges">
-                        <span class="badge badge-hot">HOT</span>
-                        <span class="badge badge-new">国产</span>
-                    </div>
-                    <div class="tool-header">
-                        <div class="tool-icon">🌙</div>
-                        <div class="tool-title-group">
-                            <h3>Kimi Chat</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">长文档</span>
-                                <span class="tool-tag">国产</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">月之暗面开发，支持超长文本输入，可上传PDF、Word等文档进行分析和问答，中文理解能力出色。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">免费</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('kimi')">详情</button>
-                            <a href="https://kimi.moonshot.cn" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
+<!-- Gemini -->
+<article class="tool-card" data-category="new featured free paid">
+<div class="tool-badges"><span class="badge badge-new">NEW</span><span class="badge badge-featured">推荐</span></div>
+<div class="tool-header">
+<div class="tool-icon">♊</div>
+<div class="tool-title"><h3>Gemini</h3><span class="developer">Google DeepMind</span><div class="tool-tags"><span class="tag">多模态</span><span class="tag">100万token</span><span class="tag">视频理解</span></div></div>
+</div>
+<div class="tool-desc">Google开发的多模态AI模型，原生支持文本、图像、音频、视频理解。Gemini 1.5 Pro支持100万token上下文，可处理1小时视频或70万字文档。与Google产品深度整合，支持实时搜索。</div>
+<div class="tool-features"><h4>核心功能</h4><ul><li>100万token超长上下文</li><li>原生多模态（文本+图像+音频+视频）</li><li>视频内容分析与总结</li><li>Google搜索实时信息</li><li>代码生成与解释</li><li>Google Workspace集成</li><li>Gemini Advanced高级版</li><li>免费额度充足</li></ul></div>
+<div class="tool-footer"><div class="tool-price"><span class="label">价格</span><span class="value free">免费 / Advanced $20/月</span></div><div class="tool-actions"><a href="https://gemini.google.com" class="btn btn-primary" target="_blank" rel="noopener">访问官网 →</a></div></div>
+</div>
 
-                <div class="tool-card" data-name="wenxin" data-type="free chinese">
-                    <div class="tool-badges">
-                        <span class="badge badge-new">国产</span>
-                    </div>
-                    <div class="tool-header">
-                        <div class="tool-icon">🇨🇳</div>
-                        <div class="tool-title-group">
-                            <h3>文心一言</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">中文AI</span>
-                                <span class="tool-tag">百度</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">百度推出的中文对话AI，在中文理解和生成方面表现优秀，与百度搜索、百度文库等产品深度整合。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">免费</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('wenxin')">详情</button>
-                            <a href="https://yiyan.baidu.com" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
+<!-- 通义千问 -->
+<article class="tool-card" data-category="china free">
+<div class="tool-badges"><span class="badge badge-china">国产</span><span class="badge badge-free">免费</span></div>
+<div class="tool-header">
+<div class="tool-icon">✨</div>
+<div class="tool-title"><h3>通义千问</h3><span class="developer">阿里巴巴</span><div class="tool-tags"><span class="tag">1000万字</span><span class="tag">办公</span><span class="tag">钉钉集成</span></div></div>
+</div>
+<div class="tool-desc">阿里巴巴推出的AI大模型，通义千问2.5版本中文能力达到国际领先水平。支持1000万字文档解析，与钉钉、淘宝、阿里云产品深度整合。提供对话、文档分析、代码编写、图片理解等功能。</div>
+<div class="tool-features"><h4>核心功能</h4><ul><li>1000万字超长文档解析</li><li>钉钉智能助理集成</li><li>通义听悟（音视频转录）</li><li>通义万相（AI绘画）</li><li>通义灵码（AI编程）</li><li>通义点金（金融分析）</li><li>企业版API（阿里云）</li><li>完全免费使用</li></ul></div>
+<div class="tool-footer"><div class="tool-price"><span class="label">价格</span><span class="value free">免费 / 企业版付费</span></div><div class="tool-actions"><a href="https://tongyi.aliyun.com" class="btn btn-primary" target="_blank" rel="noopener">访问官网 →</a></div></div>
+</div>
 
-                <div class="tool-card" data-name="tongyi" data-type="free chinese">
-                    <div class="tool-badges">
-                        <span class="badge badge-new">国产</span>
-                    </div>
-                    <div class="tool-header">
-                        <div class="tool-icon">✨</div>
-                        <div class="tool-title-group">
-                            <h3>通义千问</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">阿里AI</span>
-                                <span class="tool-tag">电商</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">阿里巴巴推出的AI大模型，在电商、办公场景有丰富的应用集成，与钉钉、淘宝生态打通。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">免费</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('tongyi')">详情</button>
-                            <a href="https://tongyi.aliyun.com" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
+<!-- 文心一言 -->
+<article class="tool-card" data-category="china free">
+<div class="tool-badges"><span class="badge badge-china">国产</span><span class="badge badge-free">免费</span></div>
+<div class="tool-header">
+<div class="tool-icon">🇨🇳</div>
+<div class="tool-title"><h3>文心一言</h3><span class="developer">百度</span><div class="tool-tags"><span class="tag">中文优化</span><span class="tag">多模态</span><span class="tag">百宝箱</span></div></div>
+</div>
+<div class="tool-desc">百度推出的中文大语言模型，基于文心大模型4.0技术。在中文理解和生成方面表现优秀，与百度搜索、百度文库、百度网盘等产品深度整合。支持文本、图片、语音多模态交互。</div>
+<div class="tool-features"><h4>核心功能</h4><ul><li>中文语义理解与生成优化</li><li>百宝箱功能商店</li><li>文心一言插件生态</li><li>文心一格AI绘画集成</li><li>语音对话（自然流畅）</li><li>百度生态深度整合</li><li>API接口（百度智能云）</li><li>文心大模型4.0 Turbo</li></ul></div>
+<div class="tool-footer"><div class="tool-price"><span class="label">价格</span><span class="value free">免费 / 专业版付费</span></div><div class="tool-actions"><a href="https://yiyan.baidu.com" class="btn btn-primary" target="_blank" rel="noopener">访问官网 →</a></div></div>
+</div>
 
-                <div class="tool-card" data-name="doubao" data-type="free chinese new">
-                    <div class="tool-badges">
-                        <span class="badge badge-new">NEW</span>
-                    </div>
-                    <div class="tool-header">
-                        <div class="tool-icon">🎵</div>
-                        <div class="tool-title-group">
-                            <h3>豆包</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">字节AI</span>
-                                <span class="tool-tag">抖音</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">字节跳动推出的AI助手，基于云雀大模型，在内容创作、知识问答方面表现出色，支持语音对话。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">免费</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('doubao')">详情</button>
-                            <a href="https://www.doubao.com" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- 豆包 -->
+<article class="tool-card" data-category="new china free">
+<div class="tool-badges"><span class="badge badge-new">NEW</span><span class="badge badge-china">国产</span><span class="badge badge-free">免费</span></div>
+<div class="tool-header">
+<div class="tool-icon">🎵</div>
+<div class="tool-title"><h3>豆包</h3><span class="developer">字节跳动</span><div class="tool-tags"><span class="tag">语音</span><span class="tag">抖音生态</span><span class="tag">内容创作</span></div></div>
+</div>
+<div class="tool-desc">字节跳动推出的AI助手，基于云雀大模型。在内容创作、知识问答方面表现出色，支持语音对话。与抖音、飞书、剪映等产品打通，特别适合内容创作者使用。界面简洁，体验流畅。</div>
+<div class="tool-features"><h4>核心功能</h4><ul><li>自然语音对话（音色优美）</li><li>英语学习助手（口语练习）</li><li>写作助手（文案/脚本/论文）</li><li>AI图片生成</li><li>AI音乐生成</li><li>智能体创建与分享</li><li>字节系产品整合</li><li>手机App体验优秀</li></ul></div>
+<div class="tool-footer"><div class="tool-price"><span class="label">价格</span><span class="value free">完全免费</span></div><div class="tool-actions"><a href="https://www.doubao.com" class="btn btn-primary" target="_blank" rel="noopener">访问官网 →</a></div></div>
+</div>
 
-        <!-- 广告位1 -->
-        <div class="ad-section">
-            <div class="ad-placeholder">
-                <div class="icon">📢</div>
-                <div>广告位招租</div>
-                <div style="font-size: 0.8em; margin-top: 5px;">联系商务合作，触达10万+精准用户</div>
-            </div>
-        </div>
+<!-- Perplexity -->
+<article class="tool-card" data-category="hot new free paid">
+<div class="tool-badges"><span class="badge badge-hot">HOT</span><span class="badge badge-new">NEW</span></div>
+<div class="tool-header">
+<div class="tool-icon">🔍</div>
+<div class="tool-title"><h3>Perplexity AI</h3><span class="developer">Perplexity</span><div class="tool-tags"><span class="tag">AI搜索</span><span class="tag">实时问答</span><span class="tag">引用来源</span></div></div>
+</div>
+<div class="tool-desc">AI驱动的搜索引擎，结合大语言模型与实时网络搜索。能够理解复杂问题，提供带引用来源的详细答案。支持学术搜索、图片识别、PDF分析。回答附带信息来源链接，可追溯验证。</div>
+<div class="tool-features"><h4>核心功能</h4><ul><li>AI实时搜索与问答</li><li>答案附带引用来源</li><li>学术文献搜索（Google Scholar）</li><li>Reddit/YouTube内容搜索</li><li>图片识别与搜索</li><li>PDF文档分析</li><li>Copilot深度研究</li><li>Collections知识库</li></ul></div>
+<div class="tool-footer"><div class="tool-price"><span class="label">价格</span><span class="value free">免费 / Pro $20/月</span></div><div class="tool-actions"><a href="https://www.perplexity.ai" class="btn btn-primary" target="_blank" rel="noopener">访问官网 →</a></div></div>
+</div>
 
-        <!-- AI绘画工具 -->
-        <section id="art">
-            <div class="section-header">
-                <div class="section-title">
-                    <div class="icon">🎨</div>
-                    <span>AI绘画工具</span>
-                </div>
-                <span class="section-count">6 个工具</span>
-            </div>
-            <div class="tools-grid" data-category="art">
-                <div class="tool-card" data-name="midjourney" data-type="paid hot">
-                    <div class="tool-badges">
-                        <span class="badge badge-hot">HOT</span>
-                        <span class="badge badge-featured">推荐</span>
-                    </div>
-                    <div class="tool-header">
-                        <div class="tool-icon">🖼️</div>
-                        <div class="tool-title-group">
-                            <h3>Midjourney</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">艺术绘画</span>
-                                <span class="tool-tag">高质量</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">目前最强的AI绘画工具之一，生成的图像艺术性极高，广泛应用于设计、创意领域。通过Discord使用。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-paid">$10起/月</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('midjourney')">详情</button>
-                            <a href="https://www.midjourney.com" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
+</div>
+</section>
 
-                <div class="tool-card" data-name="stable-diffusion" data-type="free hot">
-                    <div class="tool-badges">
-                        <span class="badge badge-featured">推荐</span>
-                    </div>
-                    <div class="tool-header">
-                        <div class="tool-icon">🎭</div>
-                        <div class="tool-title-group">
-                            <h3>Stable Diffusion</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">开源</span>
-                                <span class="tool-tag">可定制</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">开源免费的AI绘画模型，可本地部署，支持大量社区模型，灵活性极高，适合技术用户深度定制。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">免费开源</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('sd')">详情</button>
-                            <a href="https://stability.ai" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
+<!-- Newsletter -->
+<section class="newsletter" aria-labelledby="newsletter-heading">
+<h2 id="newsletter-heading">📧 订阅AI工具周刊</h2>
+<p>每周精选最新AI工具、使用技巧、行业动态，直接发送到您的邮箱</p>
+<form class="newsletter-form" action="/subscribe" method="POST">
+<input type="email" name="email" placeholder="输入您的邮箱地址" required aria-label="邮箱地址">
+<button type="submit">订阅</button>
+</form>
+</section>
 
-                <div class="tool-card" data-name="dalle" data-type="paid">
-                    <div class="tool-header">
-                        <div class="tool-icon">🌟</div>
-                        <div class="tool-title-group">
-                            <h3>DALL·E 3</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">OpenAI</span>
-                                <span class="tool-tag">文字理解</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">OpenAI的图像生成模型，理解文本能力极强，能准确呈现复杂场景和概念，与ChatGPT集成。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-paid">ChatGPT Plus</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('dalle')">详情</button>
-                            <a href="https://openai.com/dall-e-3" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
+<footer class="footer" role="contentinfo">
+<div class="footer-content">
+<div class="footer-brand">
+<h3>🚀 AI工具导航</h3>
+<p>收录200+全球优质AI工具，详细介绍、功能特点、价格方案，助你找到最适合的AI助手。</p>
+<div class="footer-social">
+<a href="#" aria-label="GitHub">📦</a>
+<a href="#" aria-label="Twitter">🐦</a>
+<a href="#" aria-label="微信">💬</a>
+</div>
+</div>
+<nav class="footer-links" aria-label="页脚导航">
+<h4>工具分类</h4>
+<ul>
+<li><a href="#writing">AI写作</a></li>
+<li><a href="#art">AI绘画</a></li>
+<li><a href="#coding">AI编程</a></li>
+<li><a href="#video">AI视频</a></li>
+</ul>
+</nav>
+<nav class="footer-links">
+<h4>关于我们</h4>
+<ul>
+<li><a href="#">关于本站</a></li>
+<li><a href="#">提交工具</a></li>
+<li><a href="#">商务合作</a></li>
+<li><a href="#">隐私政策</a></li>
+</ul>
+</nav>
+<nav class="footer-links">
+<h4>资源</h4>
+<ul>
+<li><a href="#">AI教程</a></li>
+<li><a href="#">使用技巧</a></li>
+<li><a href="#">行业报告</a></li>
+<li><a href="#">API文档</a></li>
+</ul>
+</nav>
+</div>
+<div class="footer-bottom">
+<div>© 2026 AI工具导航. All rights reserved.</div>
+<div>本站工具信息仅供参考，请以各工具官网为准 | <a href="#" style="color:var(--muted)">网站地图</a> | <a href="#" style="color:var(--muted)">免责声明</a></div>
+</div>
+</footer>
 
-                <div class="tool-card" data-name="leonardo" data-type="free">
-                    <div class="tool-header">
-                        <div class="tool-icon">🦁</div>
-                        <div class="tool-title-group">
-                            <h3>Leonardo.ai</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">游戏资产</span>
-                                <span class="tool-tag">角色设计</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">专为游戏开发者和设计师打造，擅长生成游戏素材、角色概念图、纹理等，每日免费额度充足。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">免费额度 / 付费版</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('leonardo')">详情</button>
-                            <a href="https://leonardo.ai" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
+<button class="back-to-top" id="backToTop" aria-label="返回顶部">↑</button>
 
-                <div class="tool-card" data-name="firefly" data-type="paid">
-                    <div class="tool-header">
-                        <div class="tool-icon">🏞️</div>
-                        <div class="tool-title-group">
-                            <h3>Adobe Firefly</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">商业设计</span>
-                                <span class="tool-tag">Adobe</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">Adobe推出的AI工具，集成到Photoshop等软件中，生成的图像可商用，适合专业设计 workflows。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-paid">Adobe订阅</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('firefly')">详情</button>
-                            <a href="https://www.adobe.com/sensei/generative-ai/firefly.html" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
+<script>
+// 返回顶部按钮显示/隐藏
+window.onscroll=function(){document.getElementById('backToTop').classList.toggle('visible',window.pageYOffset>300)};
 
-                <div class="tool-card" data-name="wenge" data-type="free chinese">
-                    <div class="tool-badges">
-                        <span class="badge badge-new">国产</span>
-                    </div>
-                    <div class="tool-header">
-                        <div class="tool-icon">🖌️</div>
-                        <div class="tool-title-group">
-                            <h3>文心一格</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">百度</span>
-                                <span class="tool-tag">中文理解</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">百度推出的中文AI绘画工具，对中文提示词理解较好，支持多种绘画风格，适合国内用户使用。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">免费额度</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('wenge')">详情</button>
-                            <a href="https://yige.baidu.com" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+// 筛选功能
+document.querySelectorAll('.filter').forEach(filter=>{
+filter.addEventListener('click',function(){
+document.querySelectorAll('.filter').forEach(f=>f.classList.remove('active'));
+this.classList.add('active');
+const category=this.dataset.filter;
+document.querySelectorAll('.tool-card').forEach(card=>{
+if(category==='all'||card.dataset.category.includes(category)){
+card.style.display='flex';
+}else{
+card.style.display='none';
+}
+});
+});
+});
+</script>
 
-        <!-- 广告位2 -->
-        <div class="ad-section">
-            <div class="ad-placeholder">
-                <div class="icon">💼</div>
-                <div>广告位招租</div>
-                <div style="font-size: 0.8em; margin-top: 5px;">AI工具推广 · 品牌曝光 · 效果营销</div>
-            </div>
-        </div>
-
-        <!-- AI编程工具 -->
-        <section id="coding">
-            <div class="section-header">
-                <div class="section-title">
-                    <div class="icon">💻</div>
-                    <span>AI编程工具</span>
-                </div>
-                <span class="section-count">6 个工具</span>
-            </div>
-            <div class="tools-grid" data-category="coding">
-                <div class="tool-card" data-name="copilot" data-type="paid hot">
-                    <div class="tool-badges">
-                        <span class="badge badge-hot">HOT</span>
-                        <span class="badge badge-featured">推荐</span>
-                    </div>
-                    <div class="tool-header">
-                        <div class="tool-icon">👨‍💻</div>
-                        <div class="tool-title-group">
-                            <h3>GitHub Copilot</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">代码补全</span>
-                                <span class="tool-tag">VS Code</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">GitHub和OpenAI合作开发的AI编程助手，能根据注释自动生成代码，支持多种编程语言，开发者必备。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-paid">$10/月 / 学生免费</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('copilot')">详情</button>
-                            <a href="https://github.com/features/copilot" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tool-card" data-name="cursor" data-type="free hot">
-                    <div class="tool-badges">
-                        <span class="badge badge-featured">推荐</span>
-                    </div>
-                    <div class="tool-header">
-                        <div class="tool-icon">⚡</div>
-                        <div class="tool-title-group">
-                            <h3>Cursor</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">AI编辑器</span>
-                                <span class="tool-tag">GPT-4</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">基于VS Code的AI编辑器，内置GPT-4，可以聊天式编程、自动重构代码、生成测试，体验极佳。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">免费 / Pro$20</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('cursor')">详情</button>
-                            <a href="https://cursor.sh" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tool-card" data-name="codeium" data-type="free">
-                    <div class="tool-header">
-                        <div class="tool-icon">🎯</div>
-                        <div class="tool-title-group">
-                            <h3>Codeium</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">免费替代</span>
-                                <span class="tool-tag">70+语言</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">免费的AI代码补全工具，功能接近GitHub Copilot，支持70+语言和40+编辑器，个人使用完全免费。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">免费</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('codeium')">详情</button>
-                            <a href="https://codeium.com" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tool-card" data-name="tabnine" data-type="free">
-                    <div class="tool-header">
-                        <div class="tool-icon">🔧</div>
-                        <div class="tool-title-group">
-                            <h3>Tabnine</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">隐私优先</span>
-                                <span class="tool-tag">本地部署</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">注重隐私的AI编程助手，支持本地模型部署，代码不会上传到云端，适合对代码安全要求高的企业。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">基础版 / $12/月</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('tabnine')">详情</button>
-                            <a href="https://www.tabnine.com" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tool-card" data-name="replit" data-type="free">
-                    <div class="tool-header">
-                        <div class="tool-icon">🌐</div>
-                        <div class="tool-title-group">
-                            <h3>Replit Ghostwriter</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">在线IDE</span>
-                                <span class="tool-tag">初学者</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">Replit集成的AI编程助手，在浏览器中即可编写、运行、调试代码，零配置，非常适合初学者。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">基础版 / $7/月</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('replit')">详情</button>
-                            <a href="https://replit.com" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tool-card" data-name="codewhisperer" data-type="free">
-                    <div class="tool-header">
-                        <div class="tool-icon">📊</div>
-                        <div class="tool-title-group">
-                            <h3>Amazon CodeWhisperer</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">AWS</span>
-                                <span class="tool-tag">个人免费</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">亚马逊推出的免费AI编程助手，对个人开发者完全免费，集成AWS服务推荐，适合云开发。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">个人免费</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('codewhisperer')">详情</button>
-                            <a href="https://aws.amazon.com/codewhisperer" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 广告位3 -->
-        <div class="ad-section">
-            <div class="ad-placeholder">
-                <div class="icon">🎯</div>
-                <div>广告位招租</div>
-                <div style="font-size: 0.8em; margin-top: 5px;">精准流量 · 高效转化 · 品牌提升</div>
-            </div>
-        </div>
-
-        <!-- AI视频工具 -->
-        <section id="video">
-            <div class="section-header">
-                <div class="section-title">
-                    <div class="icon">🎬</div>
-                    <span>AI视频工具</span>
-                </div>
-                <span class="section-count">6 个工具</span>
-            </div>
-            <div class="tools-grid" data-category="video">
-                <div class="tool-card" data-name="runway" data-type="free hot">
-                    <div class="tool-badges">
-                        <span class="badge badge-hot">HOT</span>
-                        <span class="badge badge-featured">推荐</span>
-                    </div>
-                    <div class="tool-header">
-                        <div class="tool-icon">🎥</div>
-                        <div class="tool-title-group">
-                            <h3>Runway Gen-2</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">文生视频</span>
-                                <span class="tool-tag">高质量</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">最先进的AI视频生成工具，可通过文本描述生成高质量视频，支持视频编辑、特效、抠像等功能。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">免费额度 / 付费版</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('runway')">详情</button>
-                            <a href="https://runwayml.com" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tool-card" data-name="heygen" data-type="paid hot">
-                    <div class="tool-badges">
-                        <span class="badge badge-featured">推荐</span>
-                    </div>
-                    <div class="tool-header">
-                        <div class="tool-icon">🗣️</div>
-                        <div class="tool-title-group">
-                            <h3>HeyGen</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">数字人</span>
-                                <span class="tool-tag">口播视频</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">AI数字人视频生成平台，输入文字即可生成口播视频，支持多语言和自定义形象，营销视频神器。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-paid">$24起/月</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('heygen')">详情</button>
-                            <a href="https://www.heygen.com" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tool-card" data-name="descript" data-type="free">
-                    <div class="tool-header">
-                        <div class="tool-icon">✂️</div>
-                        <div class="tool-title-group">
-                            <h3>Descript</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">视频编辑</span>
-                                <span class="tool-tag">文字剪辑</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">革命性的视频编辑器，可以像编辑文档一样编辑视频，自动去除语气词、生成字幕， podcasters 最爱。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">免费版 / $12/月</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('descript')">详情</button>
-                            <a href="https://www.descript.com" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tool-card" data-name="pictory" data-type="paid">
-                    <div class="tool-header">
-                        <div class="tool-icon">🎞️</div>
-                        <div class="tool-title-group">
-                            <h3>Pictory</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">文字转视频</span>
-                                <span class="tool-tag">自动素材</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">将博客文章、脚本自动转换成视频，自动匹配素材、配音、字幕，内容创作者批量生产视频利器。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-paid">$19起/月</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('pictory')">详情</button>
-                            <a href="https://pictory.ai" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tool-card" data-name="synthesia" data-type="paid">
-                    <div class="tool-header">
-                        <div class="tool-icon">🎙️</div>
-                        <div class="tool-title-group">
-                            <h3>Synthesia</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">企业视频</span>
-                                <span class="tool-tag">培训</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">企业级AI视频平台，可创建专业的培训、营销视频，无需拍摄设备和演员，多语言支持。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-paid">$22起/月</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('synthesia')">详情</button>
-                            <a href="https://www.synthesia.io" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tool-card" data-name="capcut" data-type="free chinese">
-                    <div class="tool-badges">
-                        <span class="badge badge-new">国产</span>
-                    </div>
-                    <div class="tool-header">
-                        <div class="tool-icon">📹</div>
-                        <div class="tool-title-group">
-                            <h3>剪映专业版</h3>
-                            <div class="tool-tags">
-                                <span class="tool-tag">字节</span>
-                                <span class="tool-tag">免费</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tool-desc">字节跳动推出的视频剪辑软件，内置AI字幕、AI配音、智能抠像等功能，完全免费，国内用户首选。</div>
-                    <div class="tool-footer">
-                        <div class="tool-price">
-                            <span class="price-label">价格</span>
-                            <span class="price-value price-free">免费</span>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn btn-secondary" onclick="showDetail('capcut')">详情</button>
-                            <a href="https://www.capcut.com" target="_blank" class="btn btn-primary">访问 →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- 页脚 -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>🚀 AI工具导航</h3>
-                <p>精选全球优质AI工具，助你提升工作效率。每日更新，持续收录最新AI工具。</p>
-            </div>
-            <div class="footer-links">
-                <h4>工具分类</h4>
-                <a href="#writing">AI写作</a>
-                <a href="#art">AI绘画</a>
-                <a href="#coding">AI编程</a>
-                <a href="#video">AI视频</a>
-            </div>
-            <div class="footer-links">
-                <h4>关于我们</h4>
-                <a href="#">关于本站</a>
-                <a href="#">提交工具</a>
-                <a href="#">商务合作</a>
-                <a href="#">隐私政策</a>
-            </div>
-            <div class="footer-links">
-                <h4>联系方式</h4>
-                <a href="#">意见反馈</a>
-                <a href="#">工具推荐</a>
-                <a href="#">广告合作</a>
-                <a href="#">友情链接</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div>© 2026 AI工具导航. All rights reserved.</div>
-            <div>本站工具信息仅供参考，请以各工具官网为准</div>
-        </div>
-    </footer>
-
-    <!-- 返回顶部 -->
-    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
-
-    <!-- JavaScript -->
-    <script>
-        // 页面加载完成后隐藏loader
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('loader').classList.add('hidden');
-            }, 500);
-        });
-
-        // 搜索功能
-        function searchTools() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.querySelectorAll('.tool-card');
-            
-            cards.forEach(card => {
-                const text = card.textContent.toLowerCase();
-                const section = card.closest('section');
-                
-                if (text.includes(query)) {
-                    card.style.display = 'block';
-                    if (section) section.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            // 隐藏没有结果的分类
-            document.querySelectorAll('section').forEach(section => {
-                const visibleCards = section.querySelectorAll('.tool-card[style="display: block;"], .tool-card:not([style])');
-                if (visibleCards.length === 0 && query !== '') {
-                    section.style.display = 'none';
-                } else {
-                    section.style.display = 'block';
-                }
-            });
-        }
-
-        // 回车搜索
-        document.getElementById('searchInput')?.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') searchTools();
-        });
-
-        // 筛选功能
-        function filterTools(type) {
-            // 更新标签状态
-            document.querySelectorAll('.filter-tag').forEach(tag => {
-                tag.classList.remove('active');
-            });
-            event.target.classList.add('active');
-
-            // 筛选卡片
-            const cards = document.querySelectorAll('.tool-card');
-            cards.forEach(card => {
-                if (type === 'all') {
-                    card.style.display = 'block';
-                } else if (type === 'free') {
-                    card.style.display = card.dataset.type?.includes('free') ? 'block' : 'none';
-                } else if (type === 'paid') {
-                    card.style.display = card.dataset.type?.includes('paid') ? 'block' : 'none';
-                } else if (type === 'hot') {
-                    card.style.display = card.dataset.type?.includes('hot') ? 'block' : 'none';
-                } else if (type === 'new') {
-                    card.style.display = card.dataset.type?.includes('new') ? 'block' : 'none';
-                } else if (type === 'chinese') {
-                    card.style.display = card.dataset.type?.includes('chinese') ? 'block' : 'none';
-                }
-            });
-        }
-
-        // 显示详情（可扩展为弹窗）
-        function showDetail(toolId) {
-            alert('工具详情功能开发中...\n工具ID: ' + toolId);
-        }
-
-        // 返回顶部
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // 监听滚动显示返回顶部按钮
-        window.addEventListener('scroll', function() {
-            const backToTop = document.getElementById('backToTop');
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        // 平滑滚动到锚点
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
