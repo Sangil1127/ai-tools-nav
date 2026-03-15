@@ -1,0 +1,320 @@
+/* ===== AI专员切换器样式 - 集成版 ===== */
+
+/* 专员切换按钮 - 固定在右上角 */
+.agent-toggle-btn {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 1001;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.agent-toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+}
+
+.agent-toggle-btn.active {
+    background: linear-gradient(135deg, #ef4444, #f97316);
+}
+
+/* 专员面板 - 侧滑面板 */
+.agent-panel {
+    position: fixed;
+    top: 0;
+    right: -360px;
+    width: 360px;
+    height: 100vh;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1002;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.agent-panel.open {
+    right: 0;
+}
+
+/* 面板头部 */
+.agent-panel-header {
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.agent-panel-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f8fafc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.agent-panel-subtitle {
+    font-size: 13px;
+    color: #94a3b8;
+    margin-top: 4px;
+}
+
+.agent-panel-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #94a3b8;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.agent-panel-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #f8fafc;
+}
+
+/* 当前专员信息卡 */
+.agent-current-card {
+    padding: 20px;
+    background: rgba(99, 102, 241, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.agent-current-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.agent-current-avatar {
+    font-size: 48px;
+    line-height: 1;
+}
+
+.agent-current-info {
+    flex: 1;
+}
+
+.agent-current-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-bottom: 4px;
+}
+
+.agent-current-role {
+    font-size: 13px;
+    color: #818cf8;
+    margin-bottom: 8px;
+}
+
+.agent-current-desc {
+    font-size: 12px;
+    color: #94a3b8;
+    line-height: 1.5;
+}
+
+.agent-current-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.agent-current-status::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* 专员列表 */
+.agent-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+.agent-list-title {
+    font-size: 12px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    padding-left: 8px;
+}
+
+.agent-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 8px;
+    border: 1px solid transparent;
+}
+
+.agent-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.agent-item.active {
+    background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2));
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.agent-item-avatar {
+    font-size: 28px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+}
+
+.agent-item-info {
+    flex: 1;
+}
+
+.agent-item-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #f8fafc;
+    margin-bottom: 2px;
+}
+
+.agent-item-role {
+    font-size: 11px;
+    color: #64748b;
+}
+
+.agent-item-badge {
+    font-size: 10px;
+    padding: 4px 8px;
+    background: rgba(99, 102, 241, 0.2);
+    color: #818cf8;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.agent-item.active .agent-item-badge {
+    background: #6366f1;
+    color: #fff;
+}
+
+/* 遮罩层 */
+.agent-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.agent-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 底部操作区 */
+.agent-panel-footer {
+    padding: 16px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.8);
+}
+
+.agent-action-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.agent-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+/* 响应式 */
+@media (max-width: 480px) {
+    .agent-panel {
+        width: 100%;
+        right: -100%;
+    }
+    
+    .agent-toggle-btn {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        width: 56px;
+        height: 56px;
+        font-size: 28px;
+    }
+}
+
+/* 滚动条美化 */
+.agent-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.agent-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.agent-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.agent-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
