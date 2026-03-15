@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI工具导航 v5.0 | 收录181+优质AI工具</title>
+    <meta name="description" content="收录181+优质AI工具，极简设计，高效导航">
+    
+    <!-- 新设计系统 -->
+    <link rel="stylesheet" href="v5-design.css">
+    <link rel="stylesheet" href="agent-switcher.css">
+    
+    <style>
+        /* 原有过渡动画 */
+        .tool-card {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 分类特定颜色 */
+        .section[data-category="chat"] .section-icon { background: rgba(139, 92, 246, 0.15); }
+        .section[data-category="chat"] .section-title { color: #8b5cf6; }
+        
+        .section[data-category="writing"] .section-icon { background: rgba(16, 185, 129, 0.15); }
+        .section[data-category="writing"] .section-title { color: #10b981; }
+        
+        .section[data-category="image"] .section-icon { background: rgba(245, 158, 11, 0.15); }
+        .section[data-category="image"] .section-title { color: #f59e0b; }
+        
+        .section[data-category="video"] .section-icon { background: rgba(239, 68, 68, 0.15); }
+        .section[data-category="video"] .section-title { color: #ef4444; }
+        
+        .section[data-category="audio"] .section-icon { background: rgba(6, 182, 212, 0.15); }
+        .section[data-category="audio"] .section-title { color: #06b6d4; }
+        
+        .section[data-category="code"] .section-icon { background: rgba(59, 130, 246, 0.15); }
+        .section[data-category="code"] .section-title { color: #3b82f6; }
+        
+        .section[data-category="search"] .section-icon { background: rgba(249, 115, 22, 0.15); }
+        .section[data-category="search"] .section-title { color: #f97316; }
+        
+        .section[data-category="agent"] .section-icon { background: rgba(236, 72, 153, 0.15); }
+        .section[data-category="agent"] .section-title { color: #ec4899; }
+        
+        .section[data-category="design"] .section-icon { background: rgba(20, 184, 166, 0.15); }
+        .section[data-category="design"] .section-title { color: #14b8a6; }
+        
+        .section[data-category="office"] .section-icon { background: rgba(100, 116, 139, 0.15); }
+        .section[data-category="office"] .section-title { color: #64748b; }
+        
+        .section[data-category="learn"] .section-icon { background: rgba(132, 204, 22, 0.15); }
+        .section[data-category="learn"] .section-title { color: #84cc16; }
+        
+        .section[data-category="detect"] .section-icon { background: rgba(244, 63, 94, 0.15); }
+        .section[data-category="detect"] .section-title { color: #f43f5e; }
+        
+        /* 卡片分类颜色标记 */
+        .tool-card[data-category="chat"] { --card-color: #8b5cf6; }
+        .tool-card[data-category="writing"] { --card-color: #10b981; }
+        .tool-card[data-category="image"] { --card-color: #f59e0b; }
+        .tool-card[data-category="video"] { --card-color: #ef4444; }
+        .tool-card[data-category="audio"] { --card-color: #06b6d4; }
+        .tool-card[data-category="code"] { --card-color: #3b82f6; }
+        .tool-card[data-category="search"] { --card-color: #f97316; }
+        .tool-card[data-category="agent"] { --card-color: #ec4899; }
+        .tool-card[data-category="design"] { --card-color: #14b8a6; }
+        .tool-card[data-category="office"] { --card-color: #64748b; }
+        .tool-card[data-category="learn"] { --card-color: #84cc16; }
+        .tool-card[data-category="detect"] { --card-color: #f43f5e; }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="#" class="nav-logo">
+                <div class="logo-icon">🚀</div>
+                <span class="logo-text">AI工具导航</span>
+                <span class="logo-badge">v5.0</span>
+            </a>
+            
+            <div class="nav-menu">
+                <a href="#chat" class="nav-item active">
+                    <span class="nav-item-icon">💬</span>
+                    <span>聊天</span>
+                </a>
+                <a href="#image" class="nav-item">
+                    <span class="nav-item-icon">🎨</span>
+                    <span>绘画</span>
+                </a>
+                <a href="#video" class="nav-item">
+                    <span class="nav-item-icon">🎬</span>
+                    <span>视频</span>
+                </a>
+                <a href="#code" class="nav-item">
+                    <span class="nav-item-icon">💻</span>
+                    <span>编程</span>
+                </a>
+                <a href="#writing" class="nav-item">
+                    <span class="nav-item-icon">✍️</span>
+                    <span>写作</span>
+                </a>
+                <a href="#all" class="nav-item">
+                    <span class="nav-item-icon">📋</span>
+                    <span>全部</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="nav-right">
+            <div class="nav-search">
+                <span class="nav-search-icon">🔍</span>
+                <input type="text" placeholder="搜索工具..." id="navSearch">
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 分类快捷筛选 -->
+    <div class="category-nav">
+        <button class="cat-filter active" data-category="all">
+            <span class="cat-filter-icon">🔥</span>
+            <span>全部</span>
+        </button>
+        <button class="cat-filter" data-category="chat">
+            <span class="cat-filter-icon">💬</span>
+            <span>聊天助手</span>
+        </button>
+        <button class="cat-filter" data-category="writing">
+            <span class="cat-filter-icon">✍️</span>
+            <span>AI写作</span>
+        </button>
+        <button class="cat-filter" data-category="image">
+            <span class="cat-filter-icon">🎨</span>
+            <span>AI绘画</span>
+        </button>
+        <button class="cat-filter" data-category="video">
+            <span class="cat-filter-icon">🎬</span>
+            <span>AI视频</span>
+        </button>
+        <button class="cat-filter" data-category="audio">
+            <span class="cat-filter-icon">🎵</span>
+            <span>AI音频</span>
+        </button>
+        <button class="cat-filter" data-category="code">
+            <span class="cat-filter-icon">💻</span>
+            <span>AI编程</span>
+        </button>
+        <button class="cat-filter" data-category="search">
+            <span class="cat-filter-icon">🔍</span>
+            <span>AI搜索</span>
+        </button>
+        <button class="cat-filter" data-category="agent">
+            <span class="cat-filter-icon">🤖</span>
+            <span>AI智能体</span>
+        </button>
+        <button class="cat-filter" data-category="design">
+            <span class="cat-filter-icon">🎨</span>
+            <span>AI设计</span>
+        </button>
+        <button class="cat-filter" data-category="office">
+            <span class="cat-filter-icon">📊</span>
+            <span>办公效率</span>
+        </button>
+        <button class="cat-filter" data-category="learn">
+            <span class="cat-filter-icon">📚</span>
+            <span>学习教育</span>
+        </button>
+        <button class="cat-filter" data-category="detect">
+            <span class="cat-filter-icon">🔒</span>
+            <span>内容检测</span>
+        </button>
+    </div>
+
+    <!-- 主内容区 -->
+    <main class="main-container">
+        <!-- Hero区域 -->
+        <section class="hero-section">
+            <h1 class="hero-title">发现最优质的 AI 工具</h1>
+            <p class="hero-subtitle">精选 181+ 款AI工具，涵盖聊天、绘画、视频、编程等多个领域，助您高效工作</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-value">181+</div>
+                    <div class="stat-label">收录工具</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">分类</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">精选</div>
+                </div>
+            </div>
+        </section>
