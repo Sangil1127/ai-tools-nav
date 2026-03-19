@@ -81,7 +81,29 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
+/* 装饰性渐变球 - 固定位置 */
+body::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -20%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
 /* ===== 顶部导航栏 ===== */
 .top-nav {
     position: fixed;
@@ -151,22 +173,19 @@ body {
 }
 
 .nav-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    padding: 8px 14px;
-    color: var(--text-tertiary);
-    text-decoration: none;
+    padding: 10px 20px;
     font-size: 14px;
     font-weight: 500;
-    border-radius: var(--radius);
-    transition: all var(--transition-fast);
-    position: relative;
+    border-radius: 100px;           /* pill形状 */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    ...
 }
-
 .nav-item:hover {
-    color: var(--text-primary);
-    background: var(--bg-hover);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #fafafa;
+    transform: translateY(-1px);
 }
 
 .nav-item.active {
@@ -290,10 +309,12 @@ body {
 }
 
 .hero-title {
-    font-size: 42px;
+    font-size: 48px;
     font-weight: 800;
-    margin-bottom: var(--space);
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-light) 50%, var(--primary) 100%);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #fafafa 0%, #a78bfa 50%, #ec4899 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -395,17 +416,15 @@ body {
 }
 
 .tool-card {
-    background: rgba(17, 24, 39, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(24, 24, 27, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
-    padding: 24px;
+    padding: 28px;          /* 增大了 */
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
 }
-
 .tool-card::before {
     content: '';
     position: absolute;
@@ -413,20 +432,16 @@ body {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
+    background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s ease;
 }
-
 .tool-card:hover {
-    transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(129,140,248,0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 0 30px rgba(124, 58, 237, 0.15);
+    border-color: rgba(124, 58, 237, 0.3);
 }
-
-.tool-card:hover::before {
-    opacity: 1;
 }
-
 .tool-logo {
     width: 44px;
     height: 44px;
