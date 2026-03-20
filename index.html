@@ -70,11 +70,120 @@
             white-space: nowrap;
         }
         
-        /* Main Content - 更大留白 */
+        /* Left Category Navigation - 左侧固定分类导航 */
+        .category-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.06);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 24px 0;
+        }
+        
+        .nav-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 20px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 16px;
+        }
+        
+        .nav-logo {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        
+        .nav-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #f8fafc;
+        }
+        
+        .nav-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 12px;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-bottom: 4px;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #f8fafc;
+        }
+        
+        .nav-item.active {
+            background: rgba(99, 102, 241, 0.15);
+            color: #6366f1;
+        }
+        
+        .nav-icon {
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .nav-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .nav-footer {
+            padding: 16px 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-top: auto;
+        }
+        
+        .nav-stat {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+        
+        .nav-stat-num {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #6366f1;
+        }
+        
+        .nav-stat-label {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+        
+        /* Main Content - 调整为侧边栏留出空间 */
         .main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 60px 40px 80px;
+            max-width: none;
+            margin: 0;
+            padding: 60px 40px 80px 240px;
+        }
+        
+        /* Hero Section - 调整左边距 */
+        .hero {
+            padding: 100px 40px 80px 240px;
         }
         
         /* Category - Shopify极简高级风 */
@@ -313,8 +422,21 @@
         }
         
         /* Responsive */
+        @media (max-width: 1024px) {
+            .category-nav {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            .category-nav.open {
+                transform: translateX(0);
+            }
+            .main, .hero {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+        }
         @media (max-width: 768px) {
-            .main {
+            .main, .hero {
                 padding: 40px 20px 60px;
             }
             .tools-grid {
@@ -325,7 +447,6 @@
         /* Hero Section - Shopify极简高级风 */
         .hero {
             position: relative;
-            padding: 100px 24px 80px;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -672,6 +793,51 @@
             </div>
         </div>
     </section>
+
+    <!-- 左侧固定分类导航 -->
+    <nav class="category-nav" id="categoryNav">
+        <div class="nav-header">
+            <div class="nav-logo">🚀</div>
+            <span class="nav-title">AI导航</span>
+        </div>
+        <div class="nav-list">
+            <a href="#writing" class="nav-item" data-category="writing">
+                <span class="nav-icon">✍️</span>
+                <span class="nav-text">AI写作</span>
+            </a>
+            <a href="#image" class="nav-item" data-category="image">
+                <span class="nav-icon">🎨</span>
+                <span class="nav-text">AI绘画</span>
+            </a>
+            <a href="#code" class="nav-item" data-category="code">
+                <span class="nav-icon">💻</span>
+                <span class="nav-text">AI编程</span>
+            </a>
+            <a href="#video-new" class="nav-item" data-category="video">
+                <span class="nav-icon">🎬</span>
+                <span class="nav-text">AI视频</span>
+            </a>
+            <a href="#audio" class="nav-item" data-category="audio">
+                <span class="nav-icon">🎵</span>
+                <span class="nav-text">AI音乐</span>
+            </a>
+            <a href="#design" class="nav-item" data-category="design">
+                <span class="nav-icon">🎭</span>
+                <span class="nav-text">AI设计</span>
+            </a>
+            <a href="#office" class="nav-item" data-category="office">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">办公效率</span>
+            </a>
+        </div>
+        
+        <div class="nav-footer">
+            <div class="nav-stat">
+                <span class="nav-stat-num">331+</span>
+                <span class="nav-stat-label">工具</span>
+            </div>
+        </div>
+    </nav>
 
     <main class="main">
         <!-- 筛选工具栏 -->
@@ -1476,235 +1642,6 @@
             </div>
         </section>
 
-        <!-- AI视频工具 -->
-        <section class="category" id="video">
-            <div class="category-header">
-                <h2 class="category-title">🎬 AI视频工具</h2>
-                <span class="category-count">11 个工具</span>
-            </div>
-            <div class="tools-grid">
-                <div class="tool-card" onclick="openToolModal(this)" data-category="video hot paid" data-name="runway">
-                    <div class="tool-main">
-                        <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="Runway Gen-2" loading="lazy">
-                        <div class="tool-info">
-                            <div class="tool-header-row">
-                                <h3 class="tool-name">Runway Gen-2</h3>
-                                <span class="tool-tag hot">推荐</span>
-                            </div>
-                            <div class="heat-bar">
-                                <div class="heat-fill high" style="width: 98%"></div>
-                                <span class="heat-text">98°</span>
-                            </div>
-                            <p class="tool-desc">最强AI视频生成工具，支持文生视频、图生视频。运动笔刷可控制物体运动。</p>
-                        </div>
-                    </div>
-                    <div class="tool-footer">
-                        <span class="tool-price">$15/月起</span>
-                        <a href="https://runwayml.com" class="btn" target="_blank" rel="noopener">访问</a>
-                    </div>
-                </div>
-                <div class="tool-card" onclick="openToolModal(this)" data-category="video hot paid" data-name="heygen">
-                    <div class="tool-main">
-                        <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=www.heygen.com&sz=64" alt="HeyGen" loading="lazy">
-                        <div class="tool-info">
-                            <div class="tool-header-row">
-                                <h3 class="tool-name">HeyGen</h3>
-                                <span class="tool-tag hot">推荐</span>
-                            </div>
-                            <div class="heat-bar">
-                                <div class="heat-fill high" style="width: 98%"></div>
-                                <span class="heat-text">98°</span>
-                            </div>
-                            <p class="tool-desc">AI数字人视频生成，上传照片生成说话视频。支持100+语言，口型同步精准。</p>
-                        </div>
-                    </div>
-                    <div class="tool-footer">
-                        <span class="tool-price">$24/月起</span>
-                        <a href="https://www.heygen.com" class="btn" target="_blank" rel="noopener">访问</a>
-                    </div>
-                </div>
-                <div class="tool-card" onclick="openToolModal(this)" data-category="video china" data-name="jianying capcut">
-                    <div class="tool-main">
-                        <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=www.capcut.com&sz=64" alt="剪映/CapCut" loading="lazy">
-                        <div class="tool-info">
-                            <div class="tool-header-row">
-                                <h3 class="tool-name">剪映/CapCut</h3>
-                                <span class="tool-tag china">国产</span><span class="tool-tag free">免费</span>
-                            </div>
-                            <div class="heat-bar">
-                                <div class="heat-fill " style="width: 78%"></div>
-                                <span class="heat-text">78°</span>
-                            </div>
-                            <p class="tool-desc">最受欢迎视频剪辑软件，内置AI字幕、AI配音、智能抠像、图文成片。完全免费。</p>
-                        </div>
-                    </div>
-                    <div class="tool-footer">
-                        <span class="tool-price">完全免费</span>
-                        <a href="https://www.capcut.com" class="btn" target="_blank" rel="noopener">访问</a>
-                    </div>
-                </div>
-                <div class="tool-card" onclick="openToolModal(this)" data-category="video" data-name="did">
-                    <div class="tool-main">
-                        <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=www.d-id.com&sz=64" alt="D-ID" loading="lazy">
-                        <div class="tool-info">
-                            <div class="tool-header-row">
-                                <h3 class="tool-name">D-ID</h3>
-                                <span class="tool-tag free">免费</span>
-                            </div>
-                            <div class="heat-bar">
-                                <div class="heat-fill high" style="width: 95%"></div>
-                                <span class="heat-text">95°</span>
-                            </div>
-                            <p class="tool-desc">让照片开口说话，上传照片和音频生成说话视频。API开放，可集成应用。</p>
-                        </div>
-                    </div>
-                    <div class="tool-footer">
-                        <span class="tool-price">免费/API付费</span>
-                        <a href="https://www.d-id.com" class="btn" target="_blank" rel="noopener">访问</a>
-                    </div>
-                </div>
-                <div class="tool-card" onclick="openToolModal(this)" data-category="video" data-name="pika">
-                    <div class="tool-main">
-                        <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=pika.art&sz=64" alt="Pika" loading="lazy">
-                        <div class="tool-info">
-                            <div class="tool-header-row">
-                                <h3 class="tool-name">Pika</h3>
-                                <span class="tool-tag free">免费</span>
-                            </div>
-                            <div class="heat-bar">
-                                <div class="heat-fill high" style="width: 90%"></div>
-                                <span class="heat-text">90°</span>
-                            </div>
-                            <p class="tool-desc">AI视频生成工具，支持文生视频、图生视频、视频扩展。操作简单，效果出色。</p>
-                        </div>
-                    </div>
-                    <div class="tool-footer">
-                        <span class="tool-price">免费/Pro$8/月</span>
-                        <a href="https://pika.art" class="btn" target="_blank" rel="noopener">访问</a>
-                    </div>
-                </div>
-                <div class="tool-card" onclick="openToolModal(this)" data-category="video" data-name="luma dream machine">
-                    <div class="tool-main">
-                        <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=lumalabs.ai&sz=64" alt="Luma Dream Machine" loading="lazy">
-                        <div class="tool-info">
-                            <div class="tool-header-row">
-                                <h3 class="tool-name">Luma Dream Machine</h3>
-                                <span class="tool-tag free">免费</span>
-                            </div>
-                            <div class="heat-bar">
-                                <div class="heat-fill high" style="width: 90%"></div>
-                                <span class="heat-text">90°</span>
-                            </div>
-                            <p class="tool-desc">Luma AI视频生成工具，基于3D理解。支持文生视频、图生视频，视频质量高。</p>
-                        </div>
-                    </div>
-                    <div class="tool-footer">
-                        <span class="tool-price">免费额度/订阅</span>
-                        <a href="https://lumalabs.ai/dream-machine" class="btn" target="_blank" rel="noopener">访问</a>
-                    </div>
-                </div>
-                <div class="tool-card" onclick="openToolModal(this)" data-category="video paid" data-name="synthesia">
-                    <div class="tool-main">
-                        <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=www.synthesia.io&sz=64" alt="Synthesia" loading="lazy">
-                        <div class="tool-info">
-                            <div class="tool-header-row">
-                                <h3 class="tool-name">Synthesia</h3>
-                                
-                            </div>
-                            <div class="heat-bar">
-                                <div class="heat-fill high" style="width: 93%"></div>
-                                <span class="heat-text">93°</span>
-                            </div>
-                            <p class="tool-desc">企业级数字人视频平台，适合培训、营销视频。140+数字人形象，120+语言。</p>
-                        </div>
-                    </div>
-                    <div class="tool-footer">
-                        <span class="tool-price">$30/月起</span>
-                        <a href="https://www.synthesia.io" class="btn" target="_blank" rel="noopener">访问</a>
-                    </div>
-                </div>
-                <div class="tool-card" onclick="openToolModal(this)" data-category="video" data-name="descript">
-                    <div class="tool-main">
-                        <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=www.descript.com&sz=64" alt="Descript" loading="lazy">
-                        <div class="tool-info">
-                            <div class="tool-header-row">
-                                <h3 class="tool-name">Descript</h3>
-                                <span class="tool-tag free">免费</span>
-                            </div>
-                            <div class="heat-bar">
-                                <div class="heat-fill high" style="width: 95%"></div>
-                                <span class="heat-text">95°</span>
-                            </div>
-                            <p class="tool-desc">AI视频和播客编辑工具，像编辑文档一样编辑视频。自动字幕、 overdub语音克隆。</p>
-                        </div>
-                    </div>
-                    <div class="tool-footer">
-                        <span class="tool-price">免费/$12/月</span>
-                        <a href="https://www.descript.com" class="btn" target="_blank" rel="noopener">访问</a>
-                    </div>
-                </div>
-                <div class="tool-card" onclick="openToolModal(this)" data-category="video" data-name="fliki">
-                    <div class="tool-main">
-                        <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=fliki.ai&sz=64" alt="Fliki" loading="lazy">
-                        <div class="tool-info">
-                            <div class="tool-header-row">
-                                <h3 class="tool-name">Fliki</h3>
-                                <span class="tool-tag free">免费</span>
-                            </div>
-                            <div class="heat-bar">
-                                <div class="heat-fill " style="width: 77%"></div>
-                                <span class="heat-text">77°</span>
-                            </div>
-                            <p class="tool-desc">将博客文章、文字转成视频。AI配音、素材匹配，适合内容创作者。</p>
-                        </div>
-                    </div>
-                    <div class="tool-footer">
-                        <span class="tool-price">免费/订阅</span>
-                        <a href="https://fliki.ai" class="btn" target="_blank" rel="noopener">访问</a>
-                    </div>
-                </div>
-                <div class="tool-card" onclick="openToolModal(this)" data-category="video" data-name="invideo">
-                    <div class="tool-main">
-                        <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=invideo.io&sz=64" alt="InVideo" loading="lazy">
-                        <div class="tool-info">
-                            <div class="tool-header-row">
-                                <h3 class="tool-name">InVideo</h3>
-                                <span class="tool-tag free">免费</span>
-                            </div>
-                            <div class="heat-bar">
-                                <div class="heat-fill " style="width: 77%"></div>
-                                <span class="heat-text">77°</span>
-                            </div>
-                            <p class="tool-desc">AI视频制作平台，5000+模板。适合营销视频、社交媒体视频快速制作。</p>
-                        </div>
-                    </div>
-                    <div class="tool-footer">
-                        <span class="tool-price">免费/$15/月</span>
-                        <a href="https://invideo.io" class="btn" target="_blank" rel="noopener">访问</a>
-                    </div>
-                </div>
-                <div class="tool-card" onclick="openToolModal(this)" data-category="video china" data-name="kuaishou">
-                    <div class="tool-main">
-                        <img class="tool-logo" src="https://www.google.com/s2/favicons?domain=www.kuaishou.com&sz=64" alt="快影" loading="lazy">
-                        <div class="tool-info">
-                            <div class="tool-header-row">
-                                <h3 class="tool-name">快影</h3>
-                                <span class="tool-tag china">国产</span><span class="tool-tag free">免费</span>
-                            </div>
-                            <div class="heat-bar">
-                                <div class="heat-fill " style="width: 78%"></div>
-                                <span class="heat-text">78°</span>
-                            </div>
-                            <p class="tool-desc">快手旗下视频剪辑工具，AI字幕、AI配乐、智能剪辑。手机端体验好。</p>
-                        </div>
-                    </div>
-                    <div class="tool-footer">
-                        <span class="tool-price">完全免费</span>
-                        <a href="https://www.kuaishou.com" class="btn" target="_blank" rel="noopener">访问</a>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- AI音乐工具 -->
         <section class="category" id="audio">
