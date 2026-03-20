@@ -25,93 +25,22 @@
             min-height: 100vh;
         }
         
-        /* Header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-            padding: 16px 24px;
-        }
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #f8fafc;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-        
-        /* Search */
-        .search-box {
-            flex: 1;
-            max-width: 400px;
-            position: relative;
-        }
-        .search-box input {
-            width: 100%;
-            padding: 12px 16px 12px 44px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            color: #f8fafc;
-            font-size: 0.9rem;
-            outline: none;
-            transition: all 0.3s;
-        }
-        .search-box input:focus {
-            border-color: rgba(99, 102, 241, 0.5);
-            background: rgba(255, 255, 255, 0.08);
-        }
-        .search-box::before {
-            content: "🔍";
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0.5;
-            font-size: 0.9rem;
-        }
-        
-        /* Filters */
+        /* Filters - 保留用于工具列表筛选 */
         .filters {
             display: flex;
             gap: 8px;
+            flex-wrap: wrap;
         }
         .filter {
             padding: 8px 16px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            border-radius: 100px;
             color: #94a3b8;
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s;
             white-space: nowrap;
-            border: none;
         }
         .filter:hover {
             background: rgba(255, 255, 255, 0.1);
@@ -119,8 +48,26 @@
         }
         .filter.active {
             background: rgba(99, 102, 241, 0.2);
-            border: 1px solid rgba(99, 102, 241, 0.5);
+            border-color: rgba(99, 102, 241, 0.5);
             color: #6366f1;
+        }
+        
+        /* Filter Bar - 工具列表顶部的筛选栏 */
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+            padding: 20px 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+        }
+        .filter-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 500;
+            white-space: nowrap;
         }
         
         /* Main Content - 更大留白 */
@@ -367,18 +314,6 @@
         
         /* Responsive */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .search-box {
-                max-width: 100%;
-                order: 2;
-            }
-            .filters {
-                order: 3;
-                justify-content: center;
-            }
             .main {
                 padding: 40px 20px 60px;
             }
@@ -390,7 +325,7 @@
         /* Hero Section - Shopify极简高级风 */
         .hero {
             position: relative;
-            padding: 140px 24px 80px;
+            padding: 100px 24px 80px;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -681,25 +616,6 @@
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">
-                <div class="logo-icon">🚀</div>
-                <span>AI工具导航 v5.2</span>
-            </div>
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="搜索306+ AI工具...">
-            </div>
-            <div class="filters">
-                <button class="filter active" data-filter="all">全部</button>
-                <button class="filter" data-filter="free">免费</button>
-                <button class="filter" data-filter="paid">付费</button>
-                <button class="filter" data-filter="hot">热门</button>
-                <button class="filter" data-filter="china">国产</button>
-            </div>
-        </div>
-    </header>
-
     <!-- Hero Section - Shopify极简高级风 -->
     <section class="hero">
         <div class="hero-bg">
@@ -758,6 +674,17 @@
     </section>
 
     <main class="main">
+        <!-- 筛选工具栏 -->
+        <div class="filter-bar">
+            <span class="filter-label">筛选：</span>
+            <div class="filters">
+                <button class="filter active" data-filter="all">全部</button>
+                <button class="filter" data-filter="free">免费</button>
+                <button class="filter" data-filter="paid">付费</button>
+                <button class="filter" data-filter="hot">热门</button>
+                <button class="filter" data-filter="china">国产</button>
+            </div>
+        </div>
 
         <!-- AI写作工具 -->
         <section class="category" id="writing">
@@ -6879,7 +6806,6 @@
 
     <script>
         // 搜索功能
-        const searchInput = document.getElementById('searchInput');
         const heroSearchInput = document.getElementById('heroSearchInput');
         const toolCards = document.querySelectorAll('.tool-card');
         const noResults = document.getElementById('noResults');
@@ -6905,18 +6831,11 @@
                 noResults.classList.toggle('show', visibleCount === 0 && keyword !== '');
             }
             
-            // 同步两个搜索框
-            if (searchInput && searchInput.value !== keyword) {
-                searchInput.value = keyword;
-            }
+            // 同步搜索框
             if (heroSearchInput && heroSearchInput.value !== keyword) {
                 heroSearchInput.value = keyword;
             }
         }
-        
-        searchInput.addEventListener('input', (e) => {
-            handleSearch(e.target.value);
-        });
         
         if (heroSearchInput) {
             heroSearchInput.addEventListener('input', (e) => {
