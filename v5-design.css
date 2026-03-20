@@ -1,9 +1,8 @@
-/* ===== AI工具导航 v5.0 - 高级简约设计系统 ===== */
+/* ===== AI工具导航 v6.0 - 极致高级感设计系统 ===== */
 
-/* 配色方案 - 高级简约 */
 :root {
-    /* 主色调 */
-    --primary: #6366f1;
+    --primary: #818cf8;
+    --accent-gradient: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
     --primary-light: #818cf8;
     --primary-dark: #4f46e5;
     
@@ -82,7 +81,29 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
+/* 装饰性渐变球 - 固定位置 */
+body::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -20%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
 /* ===== 顶部导航栏 ===== */
 .top-nav {
     position: fixed;
@@ -152,22 +173,19 @@ body {
 }
 
 .nav-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    padding: 8px 14px;
-    color: var(--text-tertiary);
-    text-decoration: none;
+    padding: 10px 20px;
     font-size: 14px;
     font-weight: 500;
-    border-radius: var(--radius);
-    transition: all var(--transition-fast);
-    position: relative;
+    border-radius: 100px;           /* pill形状 */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    ...
 }
-
 .nav-item:hover {
-    color: var(--text-primary);
-    background: var(--bg-hover);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #fafafa;
+    transform: translateY(-1px);
 }
 
 .nav-item.active {
@@ -291,10 +309,12 @@ body {
 }
 
 .hero-title {
-    font-size: 42px;
+    font-size: 48px;
     font-weight: 800;
-    margin-bottom: var(--space);
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-light) 50%, var(--primary) 100%);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #fafafa 0%, #a78bfa 50%, #ec4899 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -396,46 +416,32 @@ body {
 }
 
 .tool-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: var(--space);
+    background: rgba(24, 24, 27, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 28px;          /* 增大了 */
     cursor: pointer;
-    transition: all var(--transition);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
 }
-
 .tool-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--card-color, var(--primary)), transparent);
+    height: 2px;
+    background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
     opacity: 0;
-    transition: opacity var(--transition);
+    transition: opacity 0.3s ease;
 }
-
 .tool-card:hover {
-    background: var(--bg-hover);
-    border-color: var(--border-hover);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 0 30px rgba(124, 58, 237, 0.15);
+    border-color: rgba(124, 58, 237, 0.3);
 }
-
-.tool-card:hover::before {
-    opacity: 1;
 }
-
-.tool-card-header {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-sm);
-}
-
 .tool-logo {
     width: 44px;
     height: 44px;
@@ -896,4 +902,14 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--bg-hover);
+}
+/* 背景动态渐变 */
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+body {
+    background: linear-gradient(-45deg, #050814, #0a0f1c, #111827, #0a0f1c);
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
 }
