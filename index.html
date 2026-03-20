@@ -371,6 +371,298 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        /* Hero Section - Shopify极简高级风 */
+        .hero {
+            position: relative;
+            padding: 140px 24px 80px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+        }
+        
+        .hero-orb.orb-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            top: -100px;
+            right: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .hero-orb.orb-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #06b6d4, #6366f1);
+            bottom: 10%;
+            left: 5%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        
+        .hero-orb.orb-3 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            top: 40%;
+            right: 20%;
+            opacity: 0.2;
+            animation: float 12s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            color: #94a3b8;
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #f8fafc;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .hero-title .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 40px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #f8fafc;
+            letter-spacing: -0.02em;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        
+        .stat-divider {
+            width: 1px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-search {
+            margin-bottom: 32px;
+        }
+        
+        .search-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 6px;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s;
+        }
+        
+        .search-wrapper:focus-within {
+            border-color: rgba(99, 102, 241, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+        
+        .search-icon {
+            padding: 0 16px;
+            font-size: 1.25rem;
+            opacity: 0.5;
+        }
+        
+        .search-wrapper input {
+            flex: 1;
+            padding: 14px 0;
+            background: transparent;
+            border: none;
+            color: #f8fafc;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .search-wrapper input::placeholder {
+            color: #64748b;
+        }
+        
+        .search-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+        }
+        
+        .hero-quick-tags {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .quick-label {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        
+        .quick-tag {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            color: #94a3b8;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .quick-tag:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.5);
+            color: #f8fafc;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero 响应式 */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 20px 60px;
+                min-height: auto;
+            }
+            
+            .hero-title {
+                font-size: 2.25rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .hero-stats {
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
+            
+            .search-wrapper {
+                flex-direction: column;
+                padding: 12px;
+            }
+            
+            .search-icon {
+                display: none;
+            }
+            
+            .search-wrapper input {
+                width: 100%;
+                text-align: center;
+                padding: 10px;
+            }
+            
+            .search-btn {
+                width: 100%;
+            }
+            
+            .hero-quick-tags {
+                gap: 8px;
+            }
+            
+            .quick-tag {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -392,6 +684,63 @@
             </div>
         </div>
     </header>
+
+    <!-- Hero Section - Shopify极简高级风 -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-orb orb-1"></div>
+            <div class="hero-orb orb-2"></div>
+            <div class="hero-orb orb-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                已收录 331+ 优质工具
+            </div>
+            
+            <h1 class="hero-title">
+                发现最棒的 <span class="gradient-text">AI 工具</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                精选全球优秀人工智能工具，助力你的工作效率提升 10 倍
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">331+</span>
+                    <span class="stat-label">AI工具</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">25+</span>
+                    <span class="stat-label">分类</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">免费使用</span>
+                </div>
+            </div>
+            
+            <div class="hero-search">
+                <div class="search-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="heroSearchInput" placeholder="搜索 AI 工具，例如：ChatGPT、Midjourney...">
+                    <button class="search-btn">搜索</button>
+                </div>
+            </div>
+            
+            <div class="hero-quick-tags">
+                <span class="quick-label">热门：</span>
+                <a href="#chat" class="quick-tag">💬 聊天助手</a>
+                <a href="#image" class="quick-tag">🎨 图像生成</a>
+                <a href="#video" class="quick-tag">🎬 视频制作</a>
+                <a href="#code" class="quick-tag">💻 编程开发</a>
+                <a href="#writing" class="quick-tag">✍️ 写作辅助</a>
+            </div>
+        </div>
+    </section>
 
     <main class="main">
 
@@ -6516,11 +6865,12 @@
     <script>
         // 搜索功能
         const searchInput = document.getElementById('searchInput');
+        const heroSearchInput = document.getElementById('heroSearchInput');
         const toolCards = document.querySelectorAll('.tool-card');
         const noResults = document.getElementById('noResults');
         
-        searchInput.addEventListener('input', (e) => {
-            const keyword = e.target.value.toLowerCase().trim();
+        function handleSearch(keyword) {
+            keyword = keyword.toLowerCase().trim();
             let visibleCount = 0;
             
             toolCards.forEach(card => {
@@ -6536,8 +6886,49 @@
                 }
             });
             
-            noResults.classList.toggle('show', visibleCount === 0 && keyword !== '');
+            if (noResults) {
+                noResults.classList.toggle('show', visibleCount === 0 && keyword !== '');
+            }
+            
+            // 同步两个搜索框
+            if (searchInput && searchInput.value !== keyword) {
+                searchInput.value = keyword;
+            }
+            if (heroSearchInput && heroSearchInput.value !== keyword) {
+                heroSearchInput.value = keyword;
+            }
+        }
+        
+        searchInput.addEventListener('input', (e) => {
+            handleSearch(e.target.value);
         });
+        
+        if (heroSearchInput) {
+            heroSearchInput.addEventListener('input', (e) => {
+                handleSearch(e.target.value);
+                // 滚动到工具列表
+                if (e.target.value.trim() !== '') {
+                    document.querySelector('.main').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            
+            // 搜索按钮点击
+            const searchBtn = document.querySelector('.search-btn');
+            if (searchBtn) {
+                searchBtn.addEventListener('click', () => {
+                    handleSearch(heroSearchInput.value);
+                    document.querySelector('.main').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+            
+            // 回车键搜索
+            heroSearchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    handleSearch(heroSearchInput.value);
+                    document.querySelector('.main').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
         
         // 筛选功能
         const filterBtns = document.querySelectorAll('.filter');
