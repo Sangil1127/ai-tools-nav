@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 - AI工具导航</title>
+    <meta name="description" content="联系AI工具导航团队，提交工具收录申请、商务合作、广告咨询或反馈建议。">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.8; color: #333; background: #f8fafc; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 20px; text-align: center; }
+        .header h1 { font-size: 36px; margin-bottom: 15px; }
+        .header p { font-size: 18px; opacity: 0.9; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .contact-card { background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+        .contact-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .contact-icon { font-size: 48px; margin-bottom: 20px; }
+        .contact-card h3 { color: #1a1a2e; margin-bottom: 15px; font-size: 20px; }
+        .contact-card p { color: #4a5568; margin-bottom: 20px; font-size: 15px; }
+        .contact-link { display: inline-block; color: #667eea; text-decoration: none; font-weight: 600; padding: 10px 20px; border: 2px solid #667eea; border-radius: 8px; transition: all 0.3s; }
+        .contact-link:hover { background: #667eea; color: white; }
+        .section { background: white; padding: 40px; margin-bottom: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .section h2 { color: #1a1a2e; margin-bottom: 25px; font-size: 24px; display: flex; align-items: center; gap: 10px; }
+        .section p { margin-bottom: 15px; color: #4a5568; }
+        .faq-item { margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #e2e8f0; }
+        .faq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .faq-question { font-weight: 600; color: #2d3748; margin-bottom: 10px; font-size: 16px; }
+        .faq-answer { color: #4a5568; line-height: 1.8; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 30px; color: #667eea; text-decoration: none; font-weight: 500; padding: 12px 24px; border: 2px solid #667eea; border-radius: 8px; transition: all 0.3s; }
+        .back-link:hover { background: #667eea; color: white; }
+        .footer { text-align: center; padding: 40px 20px; color: #718096; border-top: 1px solid #e2e8f0; margin-top: 40px; }
+        .email-box { background: #f7fafc; padding: 20px; border-radius: 8px; margin-top: 15px; word-break: break-all; }
+        .email-box a { color: #667eea; text-decoration: none; font-weight: 500; }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 28px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .section { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📧 联系我们</h1>
+        <p>我们期待听到您的声音</p>
+    </div>
+    
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">🛠️</div>
+                <h3>工具收录申请</h3>
+                <p>如果你是 AI 工具开发者，希望将产品收录到我们的导航站</p>
+                <div class="email-box">
+                    📧 <a href="mailto:submit@ai-tools.org.cn">submit@ai-tools.org.cn</a>
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">🤝</div>
+                <h3>商务合作</h3>
+                <p>广告投放、内容合作、数据合作等商业合作咨询</p>
+                <div class="email-box">
+                    📧 <a href="mailto:business@ai-tools.org.cn">business@ai-tools.org.cn</a>
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h3>反馈建议</h3>
+                <p>网站功能建议、Bug 反馈、用户体验改进意见</p>
+                <div class="email-box">
+                    📧 <a href="mailto:feedback@ai-tools.org.cn">feedback@ai-tools.org.cn</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>❓ 常见问题</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: 如何申请将我的 AI 工具收录到导航站？</div>
+                <div class="faq-answer">A: 请发送邮件至 submit@ai-tools.org.cn，邮件主题注明「工具收录申请」，内容请包含：工具名称、官方网站链接、简短介绍、主要功能特点。我们会在 3-5 个工作日内审核并回复。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: 收录工具需要收费吗？</div>
+                <div class="faq-answer">A: 基础收录是<strong>完全免费</strong>的。我们只要求工具质量过关、网站可正常访问、内容合法合规。如需推荐位展示等增值服务，可联系商务合作邮箱咨询。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: 发现工具链接失效怎么办？</div>
+                <div class="faq-answer">A: 请发送邮件至 feedback@ai-tools.org.cn，告知失效的工具名称，我们会尽快核实并更新。也欢迎推荐新的优质工具替代。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: 可以在网站上投放广告吗？</div>
+                <div class="faq-answer">A: 可以的。我们支持多种广告合作形式，包括横幅广告、推荐位展示、软文推广等。请发送邮件至 business@ai-tools.org.cn 获取详细的广告合作方案和报价。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Q: 网站的数据来源是什么？</div>
+                <div class="faq-answer">A: 我们的数据来源于：官方公开信息、用户提交、行业调研、AI 辅助整理。所有工具都经过人工审核，确保信息的准确性和时效性。热度评分基于多维度数据综合计算。</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>⏰ 回复时间</h2>
+            <p>📅 <strong>工作日</strong>：周一至周五，通常在 24 小时内回复</p>
+            <p>🌟 <strong>周末/节假日</strong>：可能会有延迟，请耐心等待</p>
+            <p>🚨 <strong>紧急情况</strong>：如果网站出现无法访问等重大故障，请邮件标题注明「紧急」，我们会优先处理</p>
+        </div>
+        
+        <div class="section">
+            <h2>🌐 社交媒体</h2>
+            <p>关注我们的社交媒体账号，获取最新 AI 工具资讯：</p>
+            <p>📱 微信公众号：AI工具导航（即将开通）</p>
+            <p>📺 知乎专栏：AI工具导航（即将开通）</p>
+            <p>🐦 Twitter/X：@AIToolsNav（即将开通）</p>
+        </div>
+        
+        <a href="/" class="back-link">← 返回首页</a>
+    </div>
+    
+    <div class="footer">
+        <p>© 2026 AI工具导航 - 发现最棒的 AI 工具</p>
+        <p><a href="about.html">关于我们</a> | <a href="privacy.html">隐私政策</a></p>
+    </div>
+</body>
+</html>
